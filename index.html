@@ -15,8 +15,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Space Grotesk', system-ui, sans-serif; background: #f0ede7; color: #0f0f0f; overflow-x: hidden; cursor: none; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      max-width: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #f0ede7;
+      color: #0f0f0f;
+      overflow-x: clip;
+      max-width: 100%;
+      cursor: none;
+    }
+    #dc-root,
+    #dc-root > .sc-host {
+      overflow-x: clip;
+      max-width: 100%;
+    }
+    section,
+    .marquee-track,
+    .site-nav {
+      max-width: 100%;
+    }
+    .section-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-inner,
+    .proj-grid,
+    .skills-grid,
+    .contact-grid {
+      width: 100%;
+      min-width: 0;
+    }
+    .proj-grid > *,
+    .skills-grid > *,
+    .hero-inner > * {
+      min-width: 0;
+    }
     a { text-decoration: none; color: inherit; }
     ::selection { background: #e86a0a; color: #fff; }
 
@@ -98,18 +137,28 @@
         left: 0;
         right: 0;
         bottom: 0;
+        width: 100% !important;
+        max-width: 100% !important;
         flex-direction: column !important;
         align-items: stretch !important;
         gap: 0 !important;
         padding: 16px 20px 32px !important;
         background: #f0ede7;
         border-top: 3px solid #0f0f0f;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: none !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
         overflow-y: auto;
+        overflow-x: clip;
         z-index: 998;
       }
-      .site-nav.nav-open .nav-links { transform: translateX(0); }
+      .site-nav.nav-open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
       .nav-links > a {
         padding: 16px 0 !important;
         border-bottom: 2px solid rgba(15, 15, 15, 0.08) !important;
@@ -125,10 +174,29 @@
         grid-template-columns: 1fr !important;
         padding: 48px 20px 64px !important;
         gap: 40px !important;
+        justify-items: stretch;
+      }
+      .hero-inner > div:first-child {
+        width: 100%;
+        max-width: 100%;
       }
       #hero-accent { display: none; }
-      #hero-photo-wrapper { max-width: 360px; margin: 0 auto; width: 100%; }
+      #hero-photo-wrapper {
+        max-width: min(360px, 100%);
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 !important;
+      }
+      #hero-photo-wrapper > div:first-child {
+        left: 16px !important;
+        right: 16px !important;
+        top: 16px !important;
+        bottom: 0 !important;
+      }
       .hero-photo img { height: 360px !important; }
+      #hero-photo-wrapper {
+        animation: fadeUp 0.75s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+      }
       .section-pad { padding: 72px 20px !important; }
       .proj-grid { grid-template-columns: 1fr !important; }
       .proj-grid .tilt-card:not(.proj-card-wide) > div:last-child { padding: 24px 20px !important; }
@@ -165,9 +233,18 @@
       .exp-card-body { padding: 28px 20px !important; }
       .exp-card-pad { padding: 32px 20px !important; }
       .exp-grid { grid-template-columns: 48px 1fr !important; gap: 20px !important; }
+      [data-reveal] {
+        max-width: 100%;
+      }
     }
 
     @media (max-width: 600px) {
+      .hero-inner {
+        padding: 40px 16px 56px !important;
+      }
+      .section-pad { padding: 64px 16px !important; }
+      .site-nav { padding: 0 16px !important; }
+      .site-footer { padding: 24px 16px !important; }
       .hero-stats {
         flex-direction: column !important;
         gap: 20px !important;
@@ -188,6 +265,11 @@
       }
       .section-header { margin-bottom: 40px !important; }
       .hero-photo img { height: 300px !important; }
+      #hero-photo-wrapper > div:first-child {
+        left: 12px !important;
+        right: 12px !important;
+        top: 12px !important;
+      }
     }
 
     @media (max-width: 768px), (pointer: coarse) {
@@ -826,12 +908,11 @@ class Component extends DCLogic {
   // ── SCROLL REVEAL ──────────────────────────────────────────────────
   _initScrollReveal() {
     const els = document.querySelectorAll('[data-reveal]');
+    const useReducedMotion = window.matchMedia('(max-width: 900px)').matches;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
         const delay = parseFloat(e.target.dataset.delay || '0');
-        const dir = e.target.dataset.reveal;
-        const from = dir === 'left' ? 'translateX(-40px)' : dir === 'right' ? 'translateX(40px)' : 'translateY(28px)';
         e.target.style.transition = `opacity 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1), transform 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1)`;
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateX(0) translateY(0)';
@@ -842,7 +923,11 @@ class Component extends DCLogic {
     els.forEach(el => {
       const dir = el.dataset.reveal;
       el.style.opacity = '0';
-      el.style.transform = dir === 'left' ? 'translateX(-40px)' : dir === 'right' ? 'translateX(40px)' : 'translateY(28px)';
+      if (useReducedMotion) {
+        el.style.transform = 'translateY(20px)';
+      } else {
+        el.style.transform = dir === 'left' ? 'translateX(-40px)' : dir === 'right' ? 'translateX(40px)' : 'translateY(28px)';
+      }
       observer.observe(el);
     });
     this._revealObserver = observer;
