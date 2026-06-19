@@ -6,18 +6,18 @@ Sitio estático con estética **neobrutalista** (azul y naranja), una sola pági
 
 ## Vista previa
 
-Abre `Portfolio.dc.html` en el navegador o sirve la carpeta con un servidor local:
+Abre `index.html` en el navegador o sirve la carpeta con un servidor local:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Luego visita `http://localhost:8080/Portfolio.dc.html`
+Luego visita `http://localhost:8080`
 
 ## Estructura
 
 ```
-├── Portfolio.dc.html   # Página principal
+├── index.html          # Página principal
 ├── support.js          # Runtime dc
 ├── uploads/            # Imágenes de proyectos y CV
 └── screenshots/        # Capturas de referencia
