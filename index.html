@@ -2,20 +2,21 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Marcos Bentivegna | Full Stack Developer &amp; Founder · IA y Automatización</title>
-<meta name="description" content="Portfolio de Marcos Bentivegna, Full Stack Developer y Fundador de Owtli. Especializado en automatización empresarial con IA, n8n, LLMs locales y flujos multicanal.">
+<meta name="description" content="Portfolio de Marcos Bentivegna, ingeniero informático, Full Stack Developer y fundador de Owtli. LLMs en local, agentes de IA, RAG y automatización con n8n.">
 <meta name="keywords" content="Marcos Bentivegna, Full Stack Developer, Owtli, automatización, IA, n8n, LLMs, Alicante">
+<meta name="theme-color" content="#1c3f7c">
 <link rel="canonical" href="https://marcosbentivegna.com/">
 <meta property="og:title" content="Marcos Bentivegna | Full Stack Developer &amp; Founder">
-<meta property="og:description" content="Full Stack Developer y Fundador de Owtli. Automatización empresarial con IA, n8n, LLMs locales y flujos multicanal.">
+<meta property="og:description" content="Full Stack Developer y fundador de Owtli. Automatización empresarial con IA, n8n y LLMs en local.">
 <meta property="og:url" content="https://marcosbentivegna.com/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marcosbentivegna.com/uploads/586F5100-90D7-4526-9999-94724352474A_1_105_c.jpeg">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Marcos Bentivegna | Full Stack Developer &amp; Founder">
-<meta name="twitter:description" content="Full Stack Developer y Fundador de Owtli. Automatización empresarial con IA.">
+<meta name="twitter:description" content="Full Stack Developer y fundador de Owtli. Automatización empresarial con IA.">
 <meta name="twitter:image" content="https://marcosbentivegna.com/uploads/586F5100-90D7-4526-9999-94724352474A_1_105_c.jpeg">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
@@ -26,1533 +27,1122 @@
   "givenName": "Marcos",
   "familyName": "Bentivegna Adrián",
   "jobTitle": "Full Stack Developer & Founder",
+  "worksFor": { "@type": "Organization", "name": "Owtli", "url": "https://owtli.com" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad de Alicante" },
   "url": "https://marcosbentivegna.com/",
   "sameAs": [
     "https://www.linkedin.com/in/marcosbentivegna",
     "https://github.com/MarcosBentivegna"
   ],
   "email": "marcosbentivegna@gmail.com",
-  "knowsAbout": ["Artificial Intelligence", "Software Automation", "n8n", "Full Stack Development", "Cloud Computing"]
+  "knowsAbout": ["Artificial Intelligence", "Software Automation", "n8n", "Full Stack Development", "RAG", "Local LLMs"]
 }
 </script>
-<script src="./support.js"></script>
+<script>
+  /* Tema antes del primer pintado: evita el destello claro/oscuro */
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) { try { if (localStorage.getItem('dark') === '1') t = 'dark'; } catch (e) {} }
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+    document.documentElement.classList.add('js');
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="uploads/opt/marcos.jpg">
 <script defer data-domain="marcosbentivegna.com" src="https://plausible.io/js/script.js"></script>
+<style>
+  /* ───────────── Tokens ───────────── */
+  :root {
+    --paper: #f1ede4;
+    --paper-2: #e8e2d5;
+    --card: #fffdf8;
+    --ink: #15141a;
+    --ink-2: #34323b;
+    --muted: #5c5963;
+    --line: #15141a;
+    --shadow: #15141a;
+
+    --blue: #1c3f7c;
+    --blue-2: #16336a;
+    --blue-deep: #0d2247;
+    --blue-tint: #dde6f5;
+    --on-blue: #f6f2ea;
+    --on-blue-2: rgba(246, 242, 234, 0.76);
+    --on-blue-line: rgba(246, 242, 234, 0.22);
+
+    --orange: #e86a0a;
+    --orange-text: #ff9d55;      /* naranja legible sobre azul */
+    --on-orange: #15141a;
+    --green-tint: #d4f2de;
+    --green-ink: #0d5a2e;
+
+    --f-display: 'Syne', 'Arial Black', sans-serif;
+    --f-body: 'Space Grotesk', system-ui, sans-serif;
+    --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --gutter: clamp(16px, 4.5vw, 56px);
+    --maxw: 1200px;
+    --bw: 3px;
+    --nav-h: 64px;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0b111e;
+    --paper-2: #111a2c;
+    --card: #141d31;
+    --ink: #eee9df;
+    --ink-2: #d2cdc3;
+    --muted: #a7a3a6;
+    --line: #e2dccf;
+    --shadow: #e86a0a;
+
+    --blue: #0f2348;
+    --blue-2: #13294f;
+    --blue-deep: #081631;
+    --blue-tint: #1e2c4a;
+    --green-tint: #173a27;
+    --green-ink: #7fe0a4;
+    color-scheme: dark;
+  }
+
+  /* ───────────── Base ───────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color .3s, color .3s;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+  h1, h2, h3 { font-family: var(--f-display); font-weight: 800; margin: 0; text-wrap: balance; }
+  p { margin: 0; text-wrap: pretty; }
+  ::selection { background: var(--orange); color: var(--on-orange); }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  html { scrollbar-color: var(--blue) var(--paper-2); }
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-thumb { background: var(--blue); border: 3px solid var(--paper-2); }
+
+  .wrap { width: 100%; max-width: calc(var(--maxw) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skip { position: absolute; left: 12px; top: -60px; z-index: 1001; background: var(--orange); color: var(--on-orange); padding: 10px 16px; font-weight: 700; border: var(--bw) solid var(--line); }
+  .skip:focus { top: 12px; }
+  .icon { width: 1.1em; height: 1.1em; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+  .icon--fill { fill: currentColor; stroke: none; }
+
+  /* ───────────── Botones ───────────── */
+  .btn {
+    --sh: 4px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 50px; padding: 12px 24px;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;
+    border: var(--bw) solid var(--line);
+    background: var(--card); color: var(--ink);
+    box-shadow: var(--sh) var(--sh) 0 var(--shadow);
+    cursor: pointer;
+    transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out), background-color .2s;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: calc(var(--sh) + 2px) calc(var(--sh) + 2px) 0 var(--shadow); }
+  .btn:active { transform: translate(var(--sh), var(--sh)); box-shadow: 0 0 0 var(--shadow); transition-duration: .06s; }
+  .btn .icon { transition: transform .2s var(--ease-out); }
+  .btn:hover .icon--nudge { transform: translateX(3px); }
+  .btn:hover .icon--drop { transform: translateY(2px); }
+  .btn--orange { background: var(--orange); color: var(--on-orange); }
+  .btn--blue { background: var(--blue); color: var(--on-blue); }
+  .btn--ghost { background: transparent; color: var(--on-blue); border-color: var(--on-blue-line); box-shadow: none; }
+  .btn--ghost:hover { border-color: var(--on-blue); box-shadow: none; background: rgba(255,255,255,.06); transform: none; }
+  .btn--ghost:active { transform: translateY(1px); }
+  /* Sobre fondo azul, la sombra va siempre en tinta para que se lea */
+  .on-blue .btn:not(.btn--ghost) { border-color: #15141a; --shadow: #0a1430; }
+
+  /* ───────────── Nav ───────────── */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 1000;
+    height: var(--nav-h);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: var(--bw) solid var(--line);
+  }
+  .nav__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-family: var(--f-display); font-weight: 800; font-size: 24px; letter-spacing: -0.03em; line-height: 1; }
+  .logo span { color: var(--orange); }
+  .nav__links { display: flex; align-items: center; gap: 34px; }
+  .nav__link { position: relative; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 0; }
+  .nav__link::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 3px; background: var(--orange); transition: right .25s var(--ease-out); }
+  .nav__link:hover::after, .nav__link[aria-current="true"]::after { right: 0; }
+  .nav__tools { display: flex; align-items: center; gap: 10px; }
+  .seg { display: inline-flex; border: 2px solid var(--line); }
+  .seg button { border: 0; background: transparent; padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; min-width: 38px; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .icon-btn { width: 40px; height: 40px; display: inline-grid; place-items: center; border: 2px solid var(--line); background: var(--card); cursor: pointer; box-shadow: 2px 2px 0 var(--shadow); transition: transform .15s var(--ease-out), box-shadow .15s var(--ease-out); }
+  .icon-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--shadow); }
+  .icon-btn:active { transform: translate(2px,2px); box-shadow: 0 0 0 var(--shadow); }
+  .icon-btn .icon { width: 18px; height: 18px; }
+  [data-theme="dark"] .i-sun, [data-theme="light"] .i-moon { display: none; }
+  .nav__cta { min-height: 42px; padding: 8px 18px; font-size: 13px; --sh: 3px; }
+  .nav__menu { display: none; }
+  .nav__menu span { display: block; width: 18px; height: 2px; background: currentColor; transition: transform .25s var(--ease-out), opacity .2s; }
+  .nav__menu span + span { margin-top: 4px; }
+  .nav.is-open .nav__menu span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav.is-open .nav__menu span:nth-child(2) { opacity: 0; }
+  .nav.is-open .nav__menu span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ───────────── Hero ───────────── */
+  .hero {
+    position: relative;
+    background: var(--blue);
+    color: var(--on-blue);
+    padding-top: var(--nav-h);
+    border-bottom: var(--bw) solid var(--line);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero::before { /* retícula de puntos sutil */
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,.09) 1.2px, transparent 1.2px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(115deg, #000 10%, transparent 75%);
+  }
+  .hero__grid {
+    display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr);
+    align-items: center; gap: clamp(32px, 6vw, 88px);
+    min-height: min(860px, calc(100svh - var(--nav-h) - 52px));
+    padding-block: clamp(48px, 8vw, 96px);
+  }
+  .hero__copy { container-type: inline-size; min-width: 0; }
+  .status {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; color: var(--on-blue);
+    padding: 7px 14px 7px 12px; border: 2px solid var(--on-blue-line); background: rgba(255,255,255,.06);
+  }
+  .status__dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74,222,128,.6); animation: ping 2.4s var(--ease-out) infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(74,222,128,0); } }
+  .hero__name {
+    margin: 26px 0 0;
+    font-size: min(9.2cqi, 6.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+  .hero__name > span { display: block; white-space: nowrap; }
+  .hero__name .l2 { color: var(--orange); }
+  .hero__role {
+    margin-top: 22px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 12px; border: 2px solid var(--line); background: var(--card); color: var(--ink); line-height: 1.2; }
+  .on-blue .chip { border-color: #15141a; }
+  .chip--orange { background: var(--orange); color: var(--on-orange); }
+  .chip--blue { background: var(--blue); color: var(--on-blue); }
+  .chip--tint { background: var(--blue-tint); }
+  .chip--green { background: var(--green-tint); color: var(--green-ink); }
+  .chip--line { background: transparent; color: var(--on-blue); border-color: var(--on-blue-line); }
+  .hero__bio { margin-top: 26px; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.65; color: var(--on-blue-2); max-width: 54ch; }
+  .hero__bio strong { color: var(--on-blue); font-weight: 700; }
+  .hero__ctas { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .hero__facts {
+    margin: 44px 0 0; padding: 22px 0 0;
+    border-top: 2px solid var(--on-blue-line);
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
+  }
+  .hero__facts dt { font-family: var(--f-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-text); }
+  .hero__facts dd { margin: 4px 0 0; font-weight: 600; font-size: 15px; line-height: 1.35; }
+
+  .portrait { position: relative; justify-self: end; width: 100%; max-width: 380px; padding: 0 18px 18px 0; }
+  .portrait__back { position: absolute; inset: 18px 0 0 18px; background: var(--orange); border: var(--bw) solid #15141a; }
+  .portrait__card { position: relative; border: var(--bw) solid #15141a; background: var(--blue-deep); transform: rotate(-1.5deg); transition: transform .5s var(--ease-out); }
+  .portrait:hover .portrait__card { transform: rotate(0deg) translate(-3px, -3px); }
+  .portrait__card img { width: 100%; aspect-ratio: 1 / 1.08; object-fit: cover; object-position: 50% 18%; background: #c9cdd6; }
+  .portrait__cap { padding: 14px 18px; border-top: var(--bw) solid #15141a; background: var(--blue-deep); }
+  .portrait__cap b { display: block; font-family: var(--f-display); font-size: 14px; letter-spacing: 0.02em; text-transform: uppercase; color: #f6f2ea; }
+  .portrait__cap span { font-size: 13px; color: rgba(246,242,234,.7); }
+  .sticker {
+    position: absolute; top: -14px; left: -22px; z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--paper); color: var(--ink);
+    border: var(--bw) solid #15141a; box-shadow: 3px 3px 0 #15141a;
+    padding: 8px 14px; font-weight: 700; font-size: 13px; letter-spacing: 0.04em;
+    transform: rotate(-6deg);
+  }
+  .sticker img { width: 24px; height: 24px; object-fit: cover; border: 2px solid #15141a; }
+
+  /* ───────────── Marquee ───────────── */
+  .marquee { overflow: hidden; border-bottom: var(--bw) solid var(--line); background: var(--orange); color: var(--on-orange); padding: 14px 0; }
+  .marquee--ink { background: #15141a; color: var(--orange); border-top: var(--bw) solid var(--line); }
+  .marquee__track { display: flex; width: max-content; animation: mq 48s linear infinite; }
+  .marquee--ink .marquee__track { animation-direction: reverse; animation-duration: 56s; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__group { display: flex; align-items: center; flex-shrink: 0; }
+  .marquee__group span { font-family: var(--f-display); font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; padding-inline: 18px; }
+  .marquee__group i { width: 8px; height: 8px; background: currentColor; transform: rotate(45deg); flex-shrink: 0; }
+  @keyframes mq { to { transform: translateX(-50%); } }
+
+  /* ───────────── Secciones ───────────── */
+  .section { padding-block: clamp(72px, 10vw, 128px); }
+  .section--blue { background: var(--blue); color: var(--on-blue); border-block: var(--bw) solid var(--line); }
+  .section-head { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); align-items: end; gap: 16px 48px; margin-bottom: clamp(40px, 6vw, 72px); }
+  .section-head h2 { font-size: clamp(1.9rem, 9.4vw, 4.75rem); line-height: 0.95; letter-spacing: -0.03em; }
+  .section-head h2 .dot { color: var(--orange); }
+  .section-head p { max-width: 46ch; justify-self: end; color: var(--muted); font-size: 17px; }
+  .section--blue .section-head p { color: var(--on-blue-2); }
+
+  /* ── Experiencia (timeline) ── */
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+  .tl { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .tl__when { position: sticky; top: calc(var(--nav-h) + 24px); padding-top: 22px; }
+  .tl__when time, .tl__when span { display: block; font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; color: var(--ink); }
+  .tl__when .now { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-orange); background: var(--orange); padding: 3px 8px; border: 2px solid var(--line); }
+  .card {
+    background: var(--card); border: var(--bw) solid var(--line);
+    box-shadow: 6px 6px 0 var(--shadow);
+  }
+  .tl__card { padding: clamp(22px, 3.4vw, 40px); }
+  .tl__top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .mark { width: 54px; height: 54px; flex-shrink: 0; display: grid; place-items: center; border: var(--bw) solid var(--line); font-family: var(--f-display); font-weight: 800; font-size: 18px; background: var(--blue); color: #f6f2ea; overflow: hidden; }
+  .mark img { width: 100%; height: 100%; object-fit: cover; }
+  .mark--orange { background: var(--orange); color: var(--on-orange); }
+  .tl__title { min-width: 0; flex: 1; }
+  .tl__title h3 { font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -0.02em; line-height: 1.1; }
+  .tl__title h3 small { font-family: var(--f-body); font-weight: 500; font-size: 15px; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+  .tl__role { margin-top: 4px; font-weight: 600; color: var(--ink-2); }
+  .tl__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .tl__list { list-style: none; margin: 22px 0 0; padding: 22px 0 0; border-top: 2px dashed color-mix(in srgb, var(--line) 22%, transparent); display: grid; gap: 12px; }
+  .tl__list li { position: relative; padding-left: 24px; color: var(--ink-2); line-height: 1.7; max-width: 72ch; }
+  .tl__list li::before { content: ''; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; background: var(--orange); border: 2px solid var(--line); }
+  .tl__list strong { color: var(--ink); font-weight: 700; }
+  .tl--feature .tl__card { box-shadow: 8px 8px 0 var(--orange); }
+  .tl--edu .tl__card { background: var(--blue-tint); }
+
+  /* ── Proyectos (bento) ── */
+  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
+  .proj { display: flex; flex-direction: column; min-width: 0; color: var(--ink); border-color: #15141a; transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); --shadow: #0a1430; }
+  .proj:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--orange); }
+  .proj--half { grid-column: span 3; }
+  .proj--feature { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); background: var(--blue-deep); color: var(--on-blue); box-shadow: 8px 8px 0 var(--orange); }
+  .proj__media { position: relative; overflow: hidden; border-bottom: var(--bw) solid #15141a; aspect-ratio: 16 / 9; background: var(--paper-2); }
+  .proj--feature .proj__media { aspect-ratio: auto; min-height: 340px; border-bottom: 0; border-right: var(--bw) solid #15141a; }
+  .proj__media img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .7s var(--ease-out); }
+  .proj:hover .proj__media img { transform: scale(1.04); }
+  .proj__body { padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 14px; flex: 1; }
+  .proj__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .proj h3 { font-size: clamp(22px, 2.3vw, 30px); letter-spacing: -0.02em; line-height: 1.05; }
+  .proj--feature h3 { font-size: clamp(24px, 3.4vw, 44px); }
+  .proj h3 { min-width: 0; overflow-wrap: break-word; }
+  .proj p { color: var(--muted); font-size: 15.5px; line-height: 1.7; }
+  .proj--feature p { color: var(--on-blue-2); font-size: 17px; }
+  .proj__foot { margin-top: auto; padding-top: 16px; border-top: 2px solid color-mix(in srgb, currentColor 14%, transparent); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .tags li { font-size: 12px; font-weight: 700; padding: 4px 10px; border: 2px solid var(--line); background: var(--paper); }
+  .proj--feature .tags li { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28); color: #f6f2ea; }
+  .link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 3px solid var(--orange); padding-bottom: 2px; white-space: nowrap; transition: gap .2s var(--ease-out), color .2s; }
+  .link:hover { gap: 10px; }
+  .proj--feature .link { color: var(--orange-text); border-color: var(--orange-text); }
+  .proj__stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .proj { position: relative; }
+  .proj .link { position: relative; z-index: 2; }
+  .proj--oss .proj__media { display: grid; place-items: center; background: #15141a; color: #f6f2ea; }
+  .oss { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 24px; }
+  .oss svg { width: 56px; height: 56px; }
+  .oss b { font-family: var(--f-display); font-size: 22px; letter-spacing: -0.01em; }
+  .oss .chip { border-color: #f6f2ea; }
+
+  .proj__points { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .proj__points li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.6; color: var(--on-blue-2); }
+  .proj__points li::before { content: ''; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; background: var(--orange); border: 2px solid #15141a; }
+  .proj__points strong { color: #f6f2ea; }
+  .proj__facts { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 0; border: 2px solid rgba(255,255,255,.22); }
+  .proj__facts > div { flex: 1 1 0; min-width: 0; padding: 10px 14px; }
+  .proj__facts > div + div { border-left: 2px solid rgba(255,255,255,.22); }
+  .proj__facts dt { font-family: var(--f-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-text); }
+  .proj__facts dd { margin: 2px 0 0; font-family: var(--f-display); font-weight: 800; font-size: 18px; color: #f6f2ea; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .proj__media img.proj__img--contain { object-fit: contain; object-position: center; background: #070b14; }
+  .proj--feature .proj__media:has(.proj__img--contain) { background: #070b14; }
+  .proj:hover .proj__media img.proj__img--contain { transform: scale(1.02); }
+  .proj--impulsa { grid-template-columns: minmax(0, 1fr); }
+  .proj--impulsa .proj__media { aspect-ratio: 2 / 1; min-height: 0; border-right: 0; border-bottom: var(--bw) solid #15141a; }
+  .proj--impulsa .proj__media img.proj__img--contain { object-fit: cover; }
+  .proj--impulsa .proj__body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+  .proj__main, .proj__side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .proj--impulsa .proj__foot { margin-top: 0; }
+  .proj__note { font-family: var(--f-mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: rgba(246,242,234,.6); }
+  .status__dot--wip { background: var(--orange); animation: none; }
+  .proj--axis { background: #15141a; box-shadow: 8px 8px 0 #0a1430; }
+  .proj--axis:hover { box-shadow: 9px 9px 0 var(--orange); }
+  .proj--axis .proj__media { background: #f4f7fb; }
+  .proj--axis .proj__media img { object-position: center top; }
+  .proj--axis .tags li { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.28); color: #f6f2ea; }
+  .proj--axis p { color: rgba(246,242,234,.76); font-size: 17px; }
+  .axis {
+    display: grid; place-items: center; padding: 20px; border: 2px solid rgba(246,242,234,.22);
+    background:
+      linear-gradient(rgba(246,242,234,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(90deg, rgba(246,242,234,.05) 1px, transparent 1px) 0 0 / 24px 24px,
+      var(--blue);
+  }
+  .axis__stack { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .axis__mod { display: grid; gap: 2px; padding: 14px 16px; background: #fffdf8; color: #15141a; border: var(--bw) solid #15141a; box-shadow: 4px 4px 0 #15141a; font-family: var(--f-body); font-weight: 700; font-size: clamp(15px, 4vw, 18px); letter-spacing: -.01em; min-width: 0; transition: transform .3s var(--ease-out); }
+  .axis__mod small { font-family: var(--f-mono); font-weight: 700; font-size: 11px; letter-spacing: .04em; color: #5c5963; }
+  .axis__mod--core { grid-column: 1 / -1; background: var(--orange); }
+  .axis__mod--core small { color: #3a1f06; }
+  .axis__mod--imp { background: #ffb020; }
+  .axis__mod--imp small { color: #4a3300; }
+  .proj--axis:hover .axis__mod:nth-child(2) { transform: translateY(-3px); }
+  .proj--axis:hover .axis__mod:nth-child(3) { transform: translateY(-5px); }
+  .axis__base { grid-column: 1 / -1; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border: var(--bw) dashed rgba(246,242,234,.55); color: #f6f2ea; font-family: var(--f-mono); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* ── Stack (ficha técnica) ── */
+  .spec { border: var(--bw) solid var(--line); background: var(--card); box-shadow: 6px 6px 0 var(--shadow); }
+  .spec__row { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; padding: 24px clamp(20px, 3vw, 36px); align-items: start; }
+  .spec__row + .spec__row { border-top: 2px solid var(--line); }
+  .spec__row h3 { font-family: var(--f-body); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; padding-top: 6px; }
+  .spec__row--hot { background: var(--orange); color: var(--on-orange); }
+  .spec__row--hot .tags li { background: #fffdf8; color: #15141a; border-color: #15141a; }
+  .spec .tags li { font-size: 13.5px; padding: 6px 12px; }
+  .langs { display: flex; flex-wrap: wrap; gap: 10px 28px; list-style: none; padding: 0; margin: 0; }
+  .langs li { display: flex; align-items: baseline; gap: 10px; font-weight: 600; font-size: 16px; padding-top: 4px; }
+  .langs small { font-family: var(--f-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── Contacto ── */
+  .contact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 88px); align-items: start; }
+  .contact h2 { font-size: clamp(2.4rem, 11vw, 6rem); line-height: 0.92; letter-spacing: -0.035em; }
+  .contact h2 span { color: var(--orange); }
+  .contact__desc { margin-top: 24px; font-size: 18px; color: var(--on-blue-2); max-width: 46ch; }
+  .mailbox { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: stretch; border: var(--bw) solid #15141a; background: var(--blue-deep); box-shadow: 6px 6px 0 var(--orange); }
+  .mailbox a { flex: 1 1 260px; min-width: 0; padding: 18px 22px; font-weight: 700; font-size: clamp(17px, 2.2vw, 24px); overflow-wrap: anywhere; display: flex; align-items: center; gap: 12px; color: #f6f2ea; }
+  .mailbox a:hover { color: var(--orange-text); }
+  .mailbox button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; border: 0; border-left: var(--bw) solid #15141a; background: var(--orange); color: var(--on-orange); padding: 0 22px; min-height: 60px; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background-color .2s; }
+  .mailbox button:hover { background: #ff7f22; }
+  .mailbox button.is-done { background: #4ade80; }
+  .contact__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .cl { display: flex; align-items: center; gap: 18px; padding: 18px 22px; background: var(--card); color: var(--ink); border: var(--bw) solid #15141a; box-shadow: 5px 5px 0 #0a1430; transition: transform .18s var(--ease-out), box-shadow .18s var(--ease-out); min-width: 0; }
+  .cl:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--orange); }
+  .cl:active { transform: translate(5px, 5px); box-shadow: 0 0 0 #0a1430; }
+  .cl__ic { width: 46px; height: 46px; flex-shrink: 0; display: grid; place-items: center; border: 2px solid #15141a; background: var(--blue); color: #f6f2ea; }
+  .cl__ic .icon { width: 20px; height: 20px; }
+  .cl--orange .cl__ic { background: var(--orange); color: #15141a; }
+  .cl__txt { min-width: 0; }
+  .cl__txt small { display: block; font-family: var(--f-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .cl__txt b { display: block; font-size: 16px; overflow-wrap: anywhere; }
+  .cl > .icon { margin-left: auto; opacity: .5; transition: opacity .2s, transform .2s var(--ease-out); }
+  .cl:hover > .icon { opacity: 1; transform: translate(2px, -2px); }
+
+  /* ── Footer ── */
+  .footer { background: var(--blue-deep); color: rgba(246,242,234,.72); border-top: var(--bw) solid var(--line); padding-block: 26px; font-size: 14px; }
+  .footer__in { display: flex; align-items: center; justify-content: space-between; gap: 16px 28px; flex-wrap: wrap; }
+  .footer .logo { color: #f6f2ea; font-size: 20px; }
+  .footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .footer a:hover { color: var(--orange-text); }
+
+  /* ───────────── Reveal (solo con JS y sin reduced-motion) ───────────── */
+  @media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); transition-delay: var(--d, 0s); }
+    .js [data-reveal].is-in { opacity: 1; transform: none; }
+    .hero__copy > *, .portrait { animation: rise .9s var(--ease-out) both; }
+    .hero__copy > :nth-child(2) { animation-delay: .06s; }
+    .hero__copy > :nth-child(3) { animation-delay: .14s; }
+    .hero__copy > :nth-child(4) { animation-delay: .2s; }
+    .hero__copy > :nth-child(5) { animation-delay: .26s; }
+    .hero__copy > :nth-child(6) { animation-delay: .32s; }
+    .portrait { animation-delay: .18s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    .marquee__track { animation: none; }
+  }
+
+  /* ───────────── Responsive ───────────── */
+  @media (max-width: 1080px) {
+    .nav__links { gap: 22px; }
+    .tl { grid-template-columns: 130px minmax(0, 1fr); gap: 22px; }
+    .spec__row { grid-template-columns: 200px minmax(0, 1fr); }
+  }
+  @media (max-width: 920px) {
+    :root { --nav-h: 60px; }
+    .nav__menu { display: inline-grid; }
+    .nav__links {
+      position: fixed; inset: var(--nav-h) 0 0 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      padding: 12px var(--gutter) 32px;
+      background: var(--paper);
+      border-top: var(--bw) solid var(--line);
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity .25s var(--ease-out), transform .25s var(--ease-out), visibility .25s;
+      overflow-y: auto;
+    }
+    .nav.is-open .nav__links { opacity: 1; visibility: visible; transform: none; }
+    .nav__link { font-family: var(--f-display); font-size: 30px; letter-spacing: -0.02em; text-transform: none; padding: 16px 0; border-bottom: 2px solid color-mix(in srgb, var(--line) 15%, transparent); }
+    .nav__link::after { display: none; }
+    .nav__links .nav__cta { margin-top: 24px; min-height: 54px; font-size: 15px; }
+    .nav__tools .nav__cta { display: none; }
+
+    .hero__grid { grid-template-columns: 1fr; min-height: 0; }
+    .portrait { justify-self: start; max-width: 340px; margin-left: 14px; }
+    .section-head { grid-template-columns: 1fr; }
+    .section-head p { justify-self: start; }
+    .proj--feature { grid-template-columns: minmax(0, 1fr); }
+    .proj--feature .proj__media { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: var(--bw) solid #15141a; }
+    .contact { grid-template-columns: 1fr; }
+    .proj--axis { grid-template-columns: minmax(0, 1fr); }
+    .proj--impulsa .proj__body { grid-template-columns: minmax(0, 1fr); }
+    .proj--impulsa .proj__media { aspect-ratio: 16 / 10; }
+  }
+  @media (min-width: 921px) {
+    .nav__links .nav__cta { display: none; }
+  }
+  @media (max-width: 720px) {
+    .tl { grid-template-columns: 1fr; gap: 10px; }
+    .tl__when { position: static; padding-top: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tl__when .now { margin-top: 0; }
+    .bento { grid-template-columns: 1fr; gap: 20px; }
+    .proj--half { grid-column: auto; }
+    .spec__row { grid-template-columns: 1fr; gap: 12px; }
+    .spec__row h3 { padding-top: 0; }
+  }
+  @media (max-width: 560px) {
+    .hero__facts { grid-template-columns: 1fr; gap: 14px; }
+    .hero__facts > div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .hero__facts dd { margin: 0; text-align: right; }
+    .hero__ctas .btn { flex: 1 1 100%; }
+    .btn { min-height: 54px; }
+    .card, .spec { box-shadow: 4px 4px 0 var(--shadow); }
+    .tl--feature .tl__card { box-shadow: 5px 5px 0 var(--orange); }
+    .proj--feature { box-shadow: 5px 5px 0 var(--orange); }
+    .proj--axis { box-shadow: 5px 5px 0 #0a1430; }
+    .proj__facts dd { font-size: 14px; white-space: normal; }
+    .proj__facts > div { padding: 8px 10px; }
+    .axis__mod { padding: 12px; box-shadow: 3px 3px 0 #15141a; }
+    .axis__mod small { font-size: 10px; letter-spacing: 0; }
+    .axis__base { font-size: 11px; letter-spacing: .05em; }
+    .proj:hover { transform: none; }
+    .sticker { left: -10px; font-size: 12px; }
+    .portrait { max-width: 250px; }
+    .tl__top { gap: 12px; }
+    .mark { width: 46px; height: 46px; font-size: 16px; }
+    .mailbox button { flex: 1 1 100%; border-left: 0; border-top: var(--bw) solid #15141a; justify-content: center; min-height: 52px; }
+    .cl { padding: 14px 16px; gap: 14px; }
+    .cl__ic { width: 40px; height: 40px; }
+    .seg button { padding: 6px 8px; min-width: 34px; }
+  }
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html {
-      scroll-behavior: smooth;
-      overflow-x: clip;
-      max-width: 100%;
-    }
-    body {
-      margin: 0;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      background: #f0ede7;
-      color: #0f0f0f;
-      overflow-x: clip;
-      max-width: 100%;
-      cursor: none;
-    }
-    #dc-root,
-    #dc-root > .sc-host {
-      overflow-x: clip;
-      max-width: 100%;
-    }
-    section,
-    .marquee-track,
-    .site-nav {
-      max-width: 100%;
-    }
-    .section-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .hero-inner,
-    .proj-grid,
-    .skills-grid,
-    .contact-grid {
-      width: 100%;
-      min-width: 0;
-    }
-    .proj-grid > *,
-    .skills-grid > *,
-    .hero-inner > * {
-      min-width: 0;
-    }
-    a { text-decoration: none; color: inherit; }
-    ::selection { background: #e86a0a; color: #fff; }
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-    /* ── Dark mode toggle ── */
-    .dark-toggle:hover { box-shadow: 1px 1px 0 #0f0f0f !important; transform: translate(1px,1px) !important; }
-    .dark-toggle:active { box-shadow: 0 0 0 #0f0f0f !important; transform: translate(2px,2px) !important; }
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h4l1.6 4.4-2.3 1.5a11 11 0 0 0 6.3 6.3l1.5-2.3 4.4 1.6v4a1.5 1.5 0 0 1-1.6 1.5C10.6 19.9 4.1 13.4 3.5 5.1A1.5 1.5 0 0 1 5 3.5Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.31 3.44 9.8 8.2 11.39.6.11.83-.26.83-.58l-.02-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22l-.01 3.29c0 .32.21.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+  </defs>
+</svg>
 
-    /* ── Dark mode ── */
-    html.dark-mode body { background: #0d0d1a !important; color: #ddd !important; }
+<!-- ═════════════ NAV ═════════════ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="logo" aria-label="Marcos Bentivegna, inicio">MB<span>.</span></a>
 
-    /* ── Nav ── */
-    html.dark-mode .site-nav { background: #111 !important; border-bottom-color: #222 !important; }
-    html.dark-mode .site-nav a { color: #ddd !important; }
-    html.dark-mode .nav-links { background: #111 !important; }
-    html.dark-mode .nav-links > a { color: #ddd !important; }
-    html.dark-mode #lang-toggle-en { color: #ddd !important; }
-    html.dark-mode #lang-toggle-es { background: #e86a0a !important; color: #fff !important; }
-    html.dark-mode .nav-links > div { border-color: rgba(255,255,255,0.2) !important; }
-    html.dark-mode .dark-toggle { border-color: rgba(255,255,255,0.3) !important; box-shadow: 2px 2px 0 rgba(255,255,255,0.15) !important; }
-    html.dark-mode .dark-toggle:hover { box-shadow: 1px 1px 0 rgba(255,255,255,0.15) !important; }
-    html.dark-mode .site-nav > a[href="#hero"] { color: #ddd !important; }
-    html.dark-mode .nav-toggle span { background: #ddd !important; }
-    html.dark-mode .nav-toggle { border-color: rgba(255,255,255,0.3) !important; background: transparent !important; box-shadow: 2px 2px 0 rgba(255,255,255,0.15) !important; }
-    html.dark-mode .mag-btn[data-i18n="nav.contacto"] { background: #e86a0a !important; border-color: rgba(255,255,255,0.3) !important; box-shadow: 3px 3px 0 rgba(255,255,255,0.15) !important; }
-    html.dark-mode .nav-link svg { fill: #ddd !important; }
-    html.dark-mode .dt-knob { border-color: rgba(255,255,255,0.3) !important; }
-    html.dark-mode .dark-toggle svg { color: rgba(255,255,255,0.6) !important; }
+    <nav class="nav__links" id="nav-links" aria-label="Principal">
+      <a class="nav__link" href="#experiencia" data-i18n="nav.exp">Experiencia</a>
+      <a class="nav__link" href="#proyectos" data-i18n="nav.proj">Proyectos</a>
+      <a class="nav__link" href="#stack" data-i18n="nav.stack">Stack</a>
+      <a class="nav__link" href="https://github.com/MarcosBentivegna" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn--blue nav__cta" href="#contacto" data-i18n="nav.contact">Contacto</a>
+    </nav>
 
-    /* ── Section backgrounds (by ID, guaranteed match) ── */
-    html.dark-mode #experiencia { background: #111827 !important; }
-    html.dark-mode #skills { background: #111827 !important; }
-    html.dark-mode #certificaciones { background: #111827 !important; }
-    html.dark-mode #hero { background: #0a1628 !important; }
-    html.dark-mode #proyectos { background: #0a1628 !important; }
-    html.dark-mode #contacto { background: #0a1628 !important; }
-    html.dark-mode .site-footer { background: #060b14 !important; }
-
-    /* ── Card backgrounds: target by id parent + data-reveal ── */
-    html.dark-mode #experiencia [data-reveal]:not([data-reveal="up"]) { background: #1c2438 !important; }
-    html.dark-mode #experiencia [style*="#fff"] { background: #1c2438 !important; }
-    html.dark-mode #experiencia [style*="background:#fff"] { background: #1c2438 !important; }
-    html.dark-mode #skills [style*="background:#fff"] { background: #1c2438 !important; }
-    html.dark-mode #skills [style*="#fff"][data-reveal] { background: #1c2438 !important; }
-    html.dark-mode #certificaciones [data-reveal][style*="#fff"] { background: #1c2438 !important; }
-    html.dark-mode #certificaciones h3 { color: #0f0f0f !important; }
-
-    /* ── EneccDubai card header ── */
-    html.dark-mode [style*="background:#e4ebf8"] { background: #1e2a40 !important; }
-    html.dark-mode [style*="background:#f0ede7"] { background: #1c2438 !important; }
-
-    /* Owtli experience card header (already dark, keep it) */
-    html.dark-mode [style*="background:#0d1f3a"] { background: #060b18 !important; }
-
-    /* ── Section headers ── */
-    html.dark-mode .section-header h2 { color: #fff !important; }
-    html.dark-mode .section-header > div:first-child { border-color: rgba(255,255,255,0.2) !important; }
-
-    /* ── TEXT: override dark colors to white/light on all tags ── */
-    html.dark-mode h2[style*="#0f0f0f"],
-    html.dark-mode h3[style*="#0f0f0f"],
-    html.dark-mode p[style*="#0f0f0f"],
-    html.dark-mode span[style*="#0f0f0f"],
-    html.dark-mode a[style*="#0f0f0f"],
-    html.dark-mode strong[style*="#0f0f0f"] { color: #fff !important; }
-
-    html.dark-mode h3[style*="#2a2a2a"],
-    html.dark-mode p[style*="#2a2a2a"],
-    html.dark-mode span[style*="#2a2a2a"],
-    html.dark-mode strong[style*="#2a2a2a"] { color: #e0e0e0 !important; }
-
-    html.dark-mode p[style*="#555"],
-    html.dark-mode span[style*="#555"],
-    html.dark-mode strong[style*="#555"] { color: #e0e0e0 !important; }
-
-    html.dark-mode p[style*="#666"],
-    html.dark-mode span[style*="#666"] { color: #e0e0e0 !important; }
-
-    html.dark-mode p[style*="#444"],
-    html.dark-mode span[style*="#444"] { color: #e0e0e0 !important; }
-
-    html.dark-mode p[style*="#888"],
-    html.dark-mode span[style*="#888"] { color: #e0e0e0 !important; }
-
-    /* ── Project cards ── */
-    html.dark-mode #proyectos .tilt-card { background: #1c2438 !important; }
-    html.dark-mode #proyectos .tilt-card h3 { color: #fff !important; }
-    html.dark-mode #proyectos .tilt-card p { color: #e0e0e0 !important; }
-    html.dark-mode #proyectos .tilt-card span { color: #fff !important; background: #252540 !important; }
-    html.dark-mode #proyectos .tilt-card a { color: #e86a0a !important; }
-    /* Owtli card: preserve dark style with transparent tags */
-    html.dark-mode #proyectos .tilt-card[style*="#0d1f3a"] { background: #0d1f3a !important; }
-    html.dark-mode #proyectos .tilt-card[style*="#0d1f3a"] p { color: rgba(255,255,255,0.7) !important; }
-    html.dark-mode #proyectos .tilt-card[style*="#0d1f3a"] span { background: rgba(255,255,255,0.12) !important; color: #fff !important; }
-    /* Production green badge */
-    html.dark-mode #proyectos .tilt-card span[style*="#d4f5e2"] { background: #1a3a2a !important; color: #4ade80 !important; }
-    /* Tauri sidebar */
-    html.dark-mode #proyectos [style*="background:#0f0f0f"] { background: #0d0d1a !important; }
-    /* Tag separators */
-    html.dark-mode #proyectos [style*="border-top:2px solid #f0ede7"] { border-top-color: #252540 !important; }
-    html.dark-mode #proyectos [style*="background:rgba(255,255,255,0.08)"] { background: rgba(255,255,255,0.12) !important; }
-    html.dark-mode #proyectos [style*="border-color:rgba(255,255,255,0.2)"] { border-color: rgba(255,255,255,0.3) !important; }
-
-    /* ── Experience cards ── */
-    html.dark-mode #experiencia p { color: #e0e0e0 !important; }
-    html.dark-mode #experiencia h3 { color: #fff !important; }
-    html.dark-mode #experiencia strong { color: #fff !important; }
-    html.dark-mode #experiencia span { color: #ddd !important; }
-    html.dark-mode #experiencia div[style*="color"] { color: #ddd !important; }
-    /* Preserve accent colors */
-    html.dark-mode #experiencia [style*="color:#e86a0a"] { color: #e86a0a !important; }
-    html.dark-mode #experiencia [style*="color:#fff"] { color: #fff !important; }
-    /* Fix light-colored tags/badges */
-    html.dark-mode #experiencia [style*="#e4ebf8"] { background: #1e2a40 !important; color: #fff !important; }
-    html.dark-mode #experiencia [style*="#f0ede7"] { background: #1c2438 !important; color: #fff !important; }
-    html.dark-mode #experiencia span[style*="background"]:not([style*="#0d1f3a"]):not([style*="#e86a0a"]):not([style*="#1c3f7c"]) { background: #252540 !important; }
-
-    /* ── Contact cards ── */
-    html.dark-mode #contacto a[style*="background:#fff"] { background: #1a1a2e !important; }
-    html.dark-mode #contacto a[style*="background:#fff"] div[style*="color:#0f0f0f"] { color: #fff !important; }
-    html.dark-mode #contacto a[style*="background:#fff"] div[style*="color:#1c3f7c"] { color: #e86a0a !important; }
-
-    /* ── Skills tags ── */
-    html.dark-mode #skills span[style*="background"] { color: #fff !important; background: #252540 !important; }
-    html.dark-mode #skills .skill-tag { color: #fff !important; background: #252540 !important; }
-    html.dark-mode #skills [style*="background:#e86a0a"] { background: #e86a0a !important; }
-    html.dark-mode #skills [style*="background:#1c3f7c"] { background: #1c3f7c !important; }
-    html.dark-mode #skills [style*="background:rgba(255,255,255"] { background: rgba(255,255,255,0.15) !important; }
-
-    /* ── Experience card Owtli header ── */
-    html.dark-mode .exp-card-header { color: #fff !important; }
-    html.dark-mode [style*="color:rgba(255,255,255"] { color: rgba(255,255,255,0.85) !important; }
-
-
-    /* Cursor */
-    #cursor-dot { position: fixed; width: 10px; height: 10px; background: #e86a0a; border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%,-50%); transition: transform 0.08s, width 0.2s, height 0.2s, background 0.2s; will-change: left,top; }
-    #cursor-ring { position: fixed; width: 40px; height: 40px; border: 2px solid #e86a0a; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: left 0.12s cubic-bezier(0.25,0.46,0.45,0.94), top 0.12s cubic-bezier(0.25,0.46,0.45,0.94), width 0.2s, height 0.2s, opacity 0.2s; opacity: 0.5; will-change: left,top; }
-    body:hover #cursor-dot, body:hover #cursor-ring { opacity: 1; }
-    a:hover ~ #cursor-dot, button:hover ~ #cursor-dot { transform: translate(-50%,-50%) scale(1.8); }
-
-    /* Keyframes */
-    @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
-    @keyframes floatSlow { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-    @keyframes slideLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
-    @keyframes glowPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(232,106,10,0); } 50% { box-shadow: 0 0 0 8px rgba(232,106,10,0.15); } }
-    @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
-    @keyframes dotDrift { 0% { transform: translateY(0) translateX(0); } 100% { transform: translateY(-30px) translateX(10px); } }
-
-    /* Tilt cards */
-    .tilt-card { transform-style: preserve-3d; transition: transform 0.08s ease-out, box-shadow 0.08s ease-out; }
-    .tilt-card:hover { z-index: 10; }
-
-    /* Magnetic btn */
-    .mag-btn { transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.15s; }
-
-    /* Nav link hover */
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #e86a0a; transition: width 0.25s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .nav-link:hover::after { width: 100%; }
-
-    /* Skills stagger */
-    .skill-tag { animation: scaleIn 0.4s both; opacity: 0; }
-
-    /* ── Responsive layout ── */
-    .nav-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      padding: 0;
-      border: 2.5px solid #0f0f0f;
-      background: #fff;
-      box-shadow: 3px 3px 0 #0f0f0f;
-      cursor: pointer;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      flex-shrink: 0;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: #0f0f0f;
-      transition: transform 0.25s, opacity 0.25s;
-    }
-    .site-nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .site-nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
-    .site-nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .hero-photo img { height: 420px; }
-
-    @media (max-width: 1024px) {
-      .skills-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .contact-grid { gap: 48px !important; }
-    }
-
-    @media (max-width: 900px) {
-      .site-nav { padding: 0 20px !important; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: fixed !important;
-        top: 62px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100% !important;
-        max-width: 100% !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0 !important;
-        padding: 16px 20px 32px !important;
-        background: #f0ede7;
-        border-top: 3px solid #0f0f0f;
-        transform: none !important;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
-        overflow-y: auto;
-        overflow-x: clip;
-        z-index: 998;
-      }
-      .site-nav.nav-open .nav-links {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-      }
-      .nav-links > a {
-        padding: 16px 0 !important;
-        border-bottom: 2px solid rgba(15, 15, 15, 0.08) !important;
-        font-size: 13px !important;
-      }
-      .nav-links > a.mag-btn {
-        margin-top: 12px !important;
-        text-align: center !important;
-        justify-content: center !important;
-        display: flex !important;
-      }
-      .hero-inner {
-        grid-template-columns: 1fr !important;
-        padding: 48px 20px 64px !important;
-        gap: 40px !important;
-        justify-items: stretch;
-      }
-      .hero-inner > div:first-child {
-        width: 100%;
-        max-width: 100%;
-      }
-      #hero-accent { display: none; }
-      #hero-photo-wrapper {
-        max-width: min(360px, 100%);
-        margin: 0 auto;
-        width: 100%;
-        padding: 0 !important;
-      }
-      #hero-photo-wrapper > div:first-child {
-        left: 16px !important;
-        right: 16px !important;
-        top: 16px !important;
-        bottom: 0 !important;
-      }
-      .hero-photo img { height: 360px !important; }
-      #hero-photo-wrapper {
-        animation: fadeUp 0.75s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both !important;
-      }
-      .section-pad { padding: 72px 20px !important; }
-      .proj-grid { grid-template-columns: 1fr !important; }
-      .proj-grid .tilt-card:not(.proj-card-wide) > div:last-child { padding: 24px 20px !important; }
-      .proj-card-wide { flex-direction: column !important; }
-      .proj-card-wide > div:first-child {
-        width: 100% !important;
-        border-right: none !important;
-        border-bottom: 3px solid #0f0f0f !important;
-        padding: 28px 24px !important;
-      }
-      .proj-card-wide > div:last-child { padding: 28px 24px !important; }
-      .skills-grid { grid-template-columns: 1fr !important; }
-      .contact-grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-      }
-      .site-footer {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 16px !important;
-        padding: 24px 20px !important;
-      }
-      .footer-meta {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-      }
-      .exp-card-header {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 12px !important;
-        padding: 16px 20px !important;
-      }
-      .exp-card-body { padding: 28px 20px !important; }
-      .exp-card-pad { padding: 32px 20px !important; }
-      .exp-grid { grid-template-columns: 48px 1fr !important; gap: 20px !important; }
-      [data-reveal] {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero-inner {
-        padding: 40px 16px 56px !important;
-      }
-      .section-pad { padding: 64px 16px !important; }
-      .site-nav { padding: 0 16px !important; }
-      .site-footer { padding: 24px 16px !important; }
-      .hero-stats {
-        flex-direction: column !important;
-        gap: 20px !important;
-      }
-      .hero-stats > div {
-        padding: 0 !important;
-        border-right: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        padding-bottom: 16px !important;
-      }
-      .hero-stats > div:last-child {
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
-      }
-      .hero-btns a {
-        width: 100% !important;
-        justify-content: center !important;
-      }
-      .section-header { margin-bottom: 40px !important; }
-      .hero-photo img { height: 300px !important; }
-      #hero-photo-wrapper > div:first-child {
-        left: 12px !important;
-        right: 12px !important;
-        top: 12px !important;
-      }
-    }
-
-    @media (max-width: 768px), (pointer: coarse) {
-      body { cursor: auto !important; }
-      #cursor-dot, #cursor-ring { display: none !important; }
-    }
-  </style>
-</helmet>
-
-<!-- CURSOR -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<!-- NAV -->
-<nav class="site-nav" style="position:fixed;top:0;left:0;right:0;z-index:999;background:#f0ede7;border-bottom:3px solid #0f0f0f;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 52px">
-  <a href="#hero" style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;letter-spacing:-1px;color:#0f0f0f">MB<span style="color:#e86a0a">.</span></a>
-  <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="nav-links" style="display:flex;gap:40px;align-items:center">
-    <a href="#experiencia" class="nav-link" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0f0f0f" data-i18n="nav.experiencia">Experiencia</a>
-    <a href="#proyectos" class="nav-link" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0f0f0f" data-i18n="nav.proyectos">Proyectos</a>
-    <a href="#skills" class="nav-link" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0f0f0f" data-i18n="nav.skills">Stack</a>
-    <div style="display:flex;align-items:center;gap:4px;border:2px solid #0f0f0f;overflow:hidden">
-      <button id="lang-toggle-es" style="font-size:10px;font-weight:700;padding:5px 10px;border:none;background:#1c3f7c;color:#fff;cursor:pointer;letter-spacing:1px;text-transform:uppercase">ES</button>
-      <button id="lang-toggle-en" style="font-size:10px;font-weight:700;padding:5px 10px;border:none;background:transparent;color:#0f0f0f;cursor:pointer;letter-spacing:1px;text-transform:uppercase">EN</button>
+    <div class="nav__tools">
+      <div class="seg" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="Cambiar tema claro/oscuro">
+        <svg class="icon i-sun"><use href="#i-sun"/></svg>
+        <svg class="icon i-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn--blue nav__cta" href="#contacto" data-i18n="nav.contact">Contacto</a>
+      <button type="button" class="icon-btn nav__menu" id="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button id="dark-toggle" class="dark-toggle" aria-label="Toggle dark mode" style="width:48px;height:26px;border:2.5px solid #0f0f0f;background:transparent;cursor:pointer;padding:0;position:relative;box-shadow:2px 2px 0 #0f0f0f;transition:box-shadow 0.1s,transform 0.1s;flex-shrink:0;border-radius:0">
-      <span class="dt-track" style="display:block;width:100%;height:100%;position:relative;overflow:hidden">
-        <span style="position:absolute;left:5px;top:5px;pointer-events:none;z-index:0;color:#0f0f0f">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </span>
-        <span style="position:absolute;right:5px;top:5px;pointer-events:none;z-index:0;color:#0f0f0f">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </span>
-        <span class="dt-knob" style="position:absolute;top:2px;left:2px;width:18px;height:18px;background:#e86a0a;border:2px solid #0f0f0f;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);z-index:1"></span>
-      </span>
-    </button>
-    <a href="https://github.com/MarcosBentivegna" target="_blank" class="nav-link" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0f0f0f;display:inline-flex;align-items:center;gap:7px">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub
-    </a>
-    <a href="#contacto" class="mag-btn" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#fff;background:#1c3f7c;padding:9px 24px;border:2.5px solid #0f0f0f;box-shadow:3px 3px 0 #0f0f0f;display:inline-block" data-i18n="nav.contacto">Contacto</a>
   </div>
-</nav>
+</header>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-<section id="hero" style="min-height:100vh;padding-top:62px;background:#1c3f7c;border-bottom:3px solid #0f0f0f;display:flex;align-items:center;position:relative;overflow:hidden">
-  <!-- parallax dot grid -->
-  <div id="hero-dotgrid" style="position:absolute;inset:0;pointer-events:none;opacity:0.07;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:30px 30px;will-change:transform;animation:dotDrift 12s ease-in-out infinite alternate"></div>
+<main id="main">
 
-  <!-- right accent -->
-  <div id="hero-accent" style="position:absolute;right:0;top:0;bottom:0;width:38%;background:rgba(0,0,0,0.12);border-left:1.5px solid rgba(255,255,255,0.08);pointer-events:none;will-change:transform"></div>
+<!-- ═════════════ HERO ═════════════ -->
+<section class="hero on-blue" id="top" aria-labelledby="hero-name">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="status"><span class="status__dot" aria-hidden="true"></span><span data-i18n="hero.status">Abierto a proyectos y colaboraciones</span></p>
 
-  <div class="hero-inner" style="width:100%;max-width:1280px;margin:0 auto;padding:80px 64px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center;position:relative;z-index:3">
+      <h1 class="hero__name" id="hero-name" aria-label="Marcos Bentivegna">
+        <span class="l1" aria-hidden="true">Marcos</span>
+        <span class="l2" aria-hidden="true">Bentivegna</span>
+      </h1>
 
-    <!-- LEFT -->
-    <div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;animation:slideLeft 0.65s cubic-bezier(0.22,1,0.36,1) both">
-        <div style="display:inline-flex;align-items:center;gap:10px;background:#e86a0a;border:2.5px solid #0f0f0f;padding:7px 18px;box-shadow:3px 3px 0 #0f0f0f;animation:glowPulse 3s ease-in-out infinite">
-          <span style="width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block;animation:blink 2s ease-in-out infinite"></span>
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#fff" data-i18n="hero.badge">Full Stack Developer</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:2.5px solid rgba(255,255,255,0.25);padding:7px 18px">
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.85)" data-i18n="hero.role">Fundador · Owtli</span>
-        </div>
+      <div class="hero__role">
+        <span class="chip chip--orange">Full Stack Developer</span>
+        <span class="chip chip--line" data-i18n="hero.chip2">IA y automatización</span>
+        <span class="chip chip--line" data-i18n="hero.chip3">Ingeniero informático</span>
       </div>
 
-      <div style="animation:slideLeft 0.65s 0.1s cubic-bezier(0.22,1,0.36,1) both">
-        <h1 id="hero-name-1" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,4.8vw,72px);line-height:0.95;color:#fff;letter-spacing:-2px;margin:0">MARCOS</h1>
-        <h1 id="hero-name-2" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,4.8vw,72px);line-height:0.95;color:#e86a0a;letter-spacing:-2px;margin:0 0 28px">BENTIVEGNA</h1>
+      <p class="hero__bio" data-i18n="hero.bio" data-html>Fundador de <strong>Owtli</strong>. Construyo <strong>Owtli Impulsa</strong>, un SaaS donde las empresas crean automatizaciones hablando con una IA, y <strong>Owtli Axis</strong>, una plataforma de IA que se instala en su propio servidor para que sus datos no salgan de casa.</p>
+
+      <div class="hero__ctas">
+        <a class="btn" href="#proyectos"><span data-i18n="hero.cta1">Ver proyectos</span><svg class="icon icon--nudge"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--orange" href="uploads/cv-marcos-bentivegna.pdf" download="CV_Marcos_Bentivegna.pdf"><span data-i18n="hero.cta2">Descargar CV</span><svg class="icon icon--drop"><use href="#i-download"/></svg></a>
+        <a class="btn btn--ghost" href="#contacto" data-i18n="hero.cta3">Escríbeme</a>
       </div>
 
-      <p style="font-size:17px;color:rgba(255,255,255,0.7);max-width:500px;line-height:1.8;margin:0 0 42px;animation:slideLeft 0.65s 0.2s cubic-bezier(0.22,1,0.36,1) both">
-        <span data-i18n="hero.bio" data-i18n-html="true">Fundador de <strong style="color:#fff">Owtli</strong> y Full Stack Developer especializado en automatización empresarial con IA. Construyo productos que unifican datos, automatizan procesos y escalan negocios con LLMs locales, n8n y flujos multicanal. Ingeniería Informática en la Universidad de Alicante.</span>
-      </p>
-
-      <div class="hero-btns" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px;animation:fadeUp 0.65s 0.32s cubic-bezier(0.22,1,0.36,1) both">
-        <a href="#proyectos" class="mag-btn" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0f0f0f;font-weight:700;font-size:13px;padding:13px 30px;border:2.5px solid #0f0f0f;box-shadow:4px 4px 0 #0f0f0f;text-transform:uppercase;letter-spacing:1px" data-i18n="hero.btn.projects">Ver proyectos →</a>
-                  <a href="uploads/cv-marcos-bentivegna.pdf" download="CV_Marcos_Bentivegna.pdf" class="mag-btn" style="display:inline-flex;align-items:center;gap:8px;background:#e86a0a;color:#fff;font-weight:700;font-size:13px;padding:13px 30px;border:2.5px solid #0f0f0f;box-shadow:4px 4px 0 #0f0f0f;text-transform:uppercase;letter-spacing:1px" data-i18n="hero.btn.cv">Descargar CV ↓</a>
-        <a href="mailto:marcosbentivegna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:700;font-size:13px;padding:13px 30px;border:2.5px solid rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1px;transition:background 0.2s,border-color 0.2s" style-hover="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.7)" data-i18n="hero.btn.contact">Contactar</a>
-      </div>
-
-      <div class="hero-stats" style="display:flex;gap:0;border-top:1.5px solid rgba(255,255,255,0.12);padding-top:36px;animation:fadeUp 0.65s 0.42s cubic-bezier(0.22,1,0.36,1) both">
-        <div style="flex:1;padding-right:36px;border-right:1px solid rgba(255,255,255,0.12)">
-          <div id="stat-projects" style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#e86a0a;letter-spacing:-1.5px;line-height:1">0</div>
-          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px" data-i18n="stat.projects">Proyectos</div>
-        </div>
-        <div style="flex:1;padding:0 36px;border-right:1px solid rgba(255,255,255,0.12)">
-          <div id="stat-startups" style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#e86a0a;letter-spacing:-1.5px;line-height:1">0</div>
-          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px" data-i18n="stat.startups">Startups</div>
-        </div>
-        <div style="flex:1;padding-left:36px">
-          <div id="stat-tech" style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#e86a0a;letter-spacing:-1.5px;line-height:1">0</div>
-          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px" data-i18n="stat.tech">Tecnologías</div>
-        </div>
-      </div>
+      <dl class="hero__facts">
+        <div><dt data-i18n="fact.now">Ahora</dt><dd data-i18n="fact.now.v">Construyendo Owtli</dd></div>
+        <div><dt data-i18n="fact.base">Base</dt><dd>Alicante, España</dd></div>
+        <div><dt data-i18n="fact.edu">Formación</dt><dd data-i18n="fact.edu.v">Ing. Informática · UA</dd></div>
+      </dl>
     </div>
 
-    <!-- RIGHT: photo -->
-    <div id="hero-photo-wrapper" class="hero-photo" style="position:relative;padding:0 0 20px 20px;animation:slideRight 0.75s 0.15s cubic-bezier(0.22,1,0.36,1) both;will-change:transform">
-      <div style="position:absolute;top:20px;left:0;right:20px;bottom:0;background:#e86a0a;border:3px solid #0f0f0f;z-index:0"></div>
-      <div style="position:relative;z-index:1;border:3px solid #0f0f0f;overflow:hidden;background:#122d61;animation:floatSlow 6s ease-in-out infinite">
-        <img src="uploads/586F5100-90D7-4526-9999-94724352474A_1_105_c.jpeg" alt="Marcos Bentivegna" style="width:100%;display:block;object-fit:cover;object-position:center 10%">
-        <div style="background:#0f2348;border-top:3px solid #0f0f0f;padding:14px 20px">
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:#fff;letter-spacing:0.5px;text-transform:uppercase">Marcos Bentivegna Adrián</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px">Alicante, España</div>
-        </div>
+    <figure class="portrait" style="margin:0">
+      <div class="portrait__back" aria-hidden="true"></div>
+      <span class="sticker"><img src="uploads/opt/owtli-logo.jpg" alt="" width="24" height="24"><span data-i18n="hero.sticker">Fundador · Owtli</span></span>
+      <div class="portrait__card">
+        <img src="uploads/opt/marcos.jpg" alt="Retrato de Marcos Bentivegna" width="720" height="720" fetchpriority="high">
+        <figcaption class="portrait__cap"><b>Marcos Bentivegna Adrián</b><span>Full Stack · Founder</span></figcaption>
       </div>
-    </div>
+    </figure>
   </div>
 </section>
 
-<!-- ══════════════════════ MARQUEE STRIP ══════════════════════════════ -->
-<div class="marquee-track" data-speed="22" data-direction="normal" style="overflow:hidden;border-bottom:3px solid #0f0f0f;background:#e86a0a;padding:13px 0;position:relative;z-index:5">
-  <div class="marquee-inner" style="display:flex;white-space:nowrap;will-change:transform">
-    <span class="marquee-content" style="font-family:'Syne',sans-serif;font-weight:800;font-size:13px;letter-spacing:3px;color:#fff;text-transform:uppercase;padding-right:80px">AUTOMATIZACIÓN CON IA &nbsp;·&nbsp; N8N &nbsp;·&nbsp; LLMs LOCALES &nbsp;·&nbsp; RAG &nbsp;·&nbsp; AI AGENTS &nbsp;·&nbsp; DEEPSEEK &nbsp;·&nbsp; WHATSAPP API &nbsp;·&nbsp; VAPI VOICE AI &nbsp;·&nbsp; TWILIO &nbsp;·&nbsp; STRIPE &nbsp;·&nbsp; SUPABASE &nbsp;·&nbsp; CI/CD &nbsp;·&nbsp; DOCKER &nbsp;·&nbsp; CLOUDFLARE WORKERS &nbsp;·&nbsp; REACT &nbsp;·&nbsp; NEXT.JS &nbsp;·&nbsp; TYPESCRIPT &nbsp;·&nbsp;</span>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__group"><span>Automatización con IA</span><i></i><span>n8n</span><i></i><span>LLMs en local</span><i></i><span>RAG</span><i></i><span>AI Agents</span><i></i><span>DeepSeek</span><i></i><span>WhatsApp API</span><i></i><span>Vapi Voice AI</span><i></i><span>Twilio</span><i></i><span>Stripe</span><i></i><span>Supabase</span><i></i><span>Docker</span><i></i><span>Next.js</span><i></i></div>
+    <div class="marquee__group"><span>Automatización con IA</span><i></i><span>n8n</span><i></i><span>LLMs en local</span><i></i><span>RAG</span><i></i><span>AI Agents</span><i></i><span>DeepSeek</span><i></i><span>WhatsApp API</span><i></i><span>Vapi Voice AI</span><i></i><span>Twilio</span><i></i><span>Stripe</span><i></i><span>Supabase</span><i></i><span>Docker</span><i></i><span>Next.js</span><i></i></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════ EXPERIENCIA ════════════════════════════ -->
-<section id="experiencia" class="section-pad" style="padding:100px 52px;background:#f0ede7">
-  <div style="max-width:1200px;margin:0 auto">
+<!-- ═════════════ EXPERIENCIA ═════════════ -->
+<section class="section" id="experiencia" aria-labelledby="exp-title">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <h2 id="exp-title"><span data-i18n="exp.title">Experiencia</span><span class="dot">.</span></h2>
+      <p data-i18n="exp.lead">De cofundar una startup a construir la mía: arquitectura, producto y clientes, todo a la vez.</p>
+    </header>
 
-    <div class="section-header" style="display:flex;align-items:flex-end;gap:20px;margin-bottom:64px" data-reveal="up">
-      <div style="width:5px;height:64px;background:#1c3f7c;border:2px solid #0f0f0f"></div>
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#e86a0a;margin-bottom:8px" data-i18n="exp.section">01 / Trayectoria</div>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(38px,4.5vw,60px);letter-spacing:-2px;line-height:1;margin:0" data-i18n="exp.title">Experiencia</h2>
-      </div>
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:24px">
-
-      <!-- OWTLI -->
-      <div data-reveal="left" data-delay="0.05" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;overflow:hidden">
-        <div class="exp-card-header" style="background:#0d1f3a;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #0f0f0f">
-          <div style="display:flex;align-items:center;gap:14px">
-            <img src="uploads/owtli_img-1781792442229.jpeg" alt="Owtli" style="width:38px;height:38px;object-fit:cover;border:2px solid rgba(255,255,255,0.2);border-radius:4px">
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;letter-spacing:-0.5px">Owtli</span>
+    <ol class="timeline">
+      <li class="tl tl--feature" data-reveal>
+        <div class="tl__when"><time datetime="2026-02" data-i18n="exp.owtli.when">Feb 2026 – hoy</time><span class="now"><span data-i18n="now">Actual</span></span></div>
+        <article class="card tl__card">
+          <div class="tl__top">
+            <div class="mark"><img src="uploads/opt/owtli-logo.jpg" alt="" width="54" height="54"></div>
+            <div class="tl__title">
+              <h3>Owtli</h3>
+              <p class="tl__role" data-i18n="exp.owtli.role">Fundador y desarrollador full stack</p>
+            </div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="width:7px;height:7px;border-radius:50%;background:#e86a0a;display:inline-block;animation:blink 2s ease-in-out infinite"></span>
-            <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#e86a0a">Feb 2026 – Presente</span>
+          <div class="tl__tags"><span class="chip chip--blue" data-i18n="exp.owtli.b1">Startup propia</span><span class="chip chip--tint" data-i18n="exp.owtli.b2">IA · Automatización</span></div>
+          <ul class="tl__list">
+            <li data-i18n="exp.owtli.p1" data-html>Fundé <strong>Owtli</strong> tras adquirir íntegramente Mimetria y reorientarla hacia servicios de <strong>LLMs e IA en entornos locales</strong> para empresas que necesitan mantener sus datos en su propia infraestructura.</li>
+            <li data-i18n="exp.owtli.p2" data-html>Lancé <strong>Owtli Impulsa</strong> (en producción, v3.32): automatizaciones que se crean conversando y corren sobre <strong>Owtli Runner</strong>, un motor propio que diseñé para sustituir a n8n.</li>
+            <li data-i18n="exp.owtli.p4" data-html>Desarrollo con el equipo <strong>Owtli Axis</strong>, la plataforma on-premise: chat, base de conocimiento y consultas en lenguaje natural a la base de datos de la empresa.</li>
+            <li data-i18n="exp.owtli.p3" data-html>Responsable de la <strong>arquitectura técnica</strong>, el producto y la relación con clientes, compaginándolo con Ingeniería Informática.</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl" data-reveal>
+        <div class="tl__when"><time datetime="2025-11">Nov 2025 – Feb 2026</time></div>
+        <article class="card tl__card">
+          <div class="tl__top">
+            <div class="mark" aria-hidden="true">M</div>
+            <div class="tl__title">
+              <h3>Mimetria <small data-i18n="exp.mim.evo">→ evolucionó a Owtli</small></h3>
+              <p class="tl__role" data-i18n="exp.mim.role">Cofundador y desarrollador full stack · Alicante</p>
+            </div>
+          </div>
+          <ul class="tl__list">
+            <li data-i18n="exp.mim.p1" data-html>Cofundé Mimetria con dos socios para <strong>unificar CRMs, bases de datos y herramientas corporativas</strong> en medianas y grandes empresas, con despliegues de <strong>Google Workspace</strong> y <strong>Google Cloud Admin Console</strong>.</li>
+            <li data-i18n="exp.mim.p2" data-html>Desarrollé <strong>EneccDubai</strong>, nuestro primer cliente real, y la landing corporativa con panel de administración para proyectos y blog orientado a SEO.</li>
+            <li data-i18n="exp.mim.p3" data-html>En febrero de 2026, cuando los socios decidieron no continuar, <strong>adquirí el proyecto</strong> y lo relancé como Owtli.</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl" data-reveal>
+        <div class="tl__when"><time datetime="2025-06">Jun – Sep 2025</time></div>
+        <article class="card tl__card">
+          <div class="tl__top">
+            <div class="mark mark--orange" aria-hidden="true">K</div>
+            <div class="tl__title">
+              <h3>Khronodesk</h3>
+              <p class="tl__role" data-i18n="exp.khr.role">Proyecto personal</p>
+            </div>
+          </div>
+          <ul class="tl__list">
+            <li data-i18n="exp.khr.p1" data-html>SaaS con <strong>IA</strong> que convierte DMs de WhatsApp e Instagram en reservas reales. Automatiza citas para negocios locales mediante <strong>WhatsApp Business API</strong> (Baileys), con confirmaciones y recordatorios automáticos.</li>
+          </ul>
+        </article>
+      </li>
+
+      <li class="tl tl--edu" data-reveal>
+        <div class="tl__when"><time datetime="2022">2022 – 2027</time></div>
+        <article class="card tl__card">
+          <div class="tl__top">
+            <div class="mark" aria-hidden="true">UA</div>
+            <div class="tl__title">
+              <h3>Universidad de Alicante</h3>
+              <p class="tl__role" data-i18n="exp.ua.role">Grado en Ingeniería Informática</p>
+            </div>
+          </div>
+          <div class="tl__tags"><span class="chip chip--orange" data-i18n="exp.ua.b1">Especialidad: Ingeniería del Software</span></div>
+          <ul class="tl__list">
+            <li data-i18n="exp.ua.p1" data-html>Itinerario de Ingeniería del Software (2025–2026): <strong>arquitectura</strong>, sistemas distribuidos, metodologías ágiles, calidad e ingeniería de requisitos.</li>
+            <li data-i18n="exp.ua.p2" data-html>Roles de <strong>liderazgo</strong> en los proyectos de la carrera, aplicando <strong>SCRUM</strong> y coordinando equipos de desarrollo.</li>
+          </ul>
+        </article>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═════════════ PROYECTOS ═════════════ -->
+<section class="section section--blue on-blue" id="proyectos" aria-labelledby="proj-title">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <h2 id="proj-title"><span data-i18n="proj.title">Proyectos</span><span class="dot">.</span></h2>
+      <p data-i18n="proj.lead">Productos en producción, clientes reales y algo de código abierto.</p>
+    </header>
+
+    <div class="bento">
+      <article class="card proj proj--feature proj--impulsa" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/impulsa.jpg" alt="Portada de Owtli Impulsa: «Tu empresa, orquestada por IA»" width="1600" height="960" loading="lazy" class="proj__img--contain"></div>
+        <div class="proj__body">
+          <div class="proj__main">
+          <div class="proj__head">
+            <h3>Owtli Impulsa</h3>
+            <span class="chip chip--orange"><span class="status__dot" aria-hidden="true"></span><span data-i18n="tag.prod">En producción</span></span>
+          </div>
+          <p data-i18n="proj.impulsa" data-html>SaaS de automatización para empresas. El cliente describe en una frase lo que necesita, la automatización nace en ese momento y se termina de formar <strong>hablando con un asistente de IA</strong> que la genera, la ensaya y la repara solo cuando falla.</p>
+          <ul class="proj__points">
+            <li data-i18n="proj.impulsa.p1" data-html><strong>Owtli Runner</strong>, motor propio que sustituyó a n8n: especificación en prosa, scripts deterministas y Playwright para las apps sin API.</li>
+            <li data-i18n="proj.impulsa.p2" data-html>Batería de regresión contra el modelo real: <strong>29/29 encargos válidos</strong> a la primera (Holded, Stripe, HubSpot, Shopify, WhatsApp…).</li>
+            <li data-i18n="proj.impulsa.p3" data-html>Multiempresa con aislamiento por organización, créditos de IA en euros con Stripe y despliegue continuo.</li>
+          </ul>
+          </div>
+          <div class="proj__side">
+          <dl class="proj__facts">
+            <div><dt data-i18n="f.version">Versión</dt><dd>3.32</dd></div>
+            <div><dt>Commits</dt><dd>469</dd></div>
+            <div><dt data-i18n="f.since">Desde</dt><dd data-i18n="f.since.v">Jun 2026</dd></div>
+          </dl>
+          <div class="proj__foot">
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Cloudflare</li><li>Node.js</li><li>Playwright</li><li>DeepSeek</li><li>Stripe</li></ul>
+            <a class="link proj__stretch" href="https://impulsa.owtli.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
           </div>
         </div>
-        <div class="exp-card-body" style="padding:40px 48px">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px">
-            <div>
-              <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin:0 0 10px;letter-spacing:-0.5px" data-i18n="exp.owtli.role">Fundador &amp; Full Stack Developer</h3>
-              <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#1c3f7c;color:#fff;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.owtli.badge1">Startup propia</span>
-                <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#e4ebf8;color:#0f0f0f;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.owtli.badge2">IA · Automatización</span>
-              </div>
-            </div>
-          </div>
-          <div style="height:2px;background:#f0ede7;margin:0 0 20px"></div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <div style="min-width:8px;height:8px;background:#e86a0a;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-              <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.owtli.p1" data-i18n-html="true">Fundé <strong>Owtli</strong> tras adquirir Mimetria —la anterior startup de la que fui cofundador— dándole un nuevo enfoque: servicios de <strong>LLMs e IAs en entornos locales</strong> para medianas y grandes empresas que necesitan privacidad de datos.</p>
-            </div>
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <div style="min-width:8px;height:8px;background:#e86a0a;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-              <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.owtli.p2" data-i18n-html="true">Desarrollo <strong>software de automatización de procesos</strong> y unificación de datos en entornos de IA, eliminando silos de información y flujos de trabajo manuales en empresas con operaciones complejas.</p>
-            </div>
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <div style="min-width:8px;height:8px;background:#e86a0a;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-              <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.owtli.p3" data-i18n-html="true">Responsable de toda la arquitectura técnica, el desarrollo de producto y la relación con clientes, compaginando el proyecto con los estudios de Ingeniería Informática.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </article>
 
-      <!-- MIMETRIA -->
-      <div data-reveal="right" data-delay="0.1" class="exp-card-pad" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;padding:44px 48px">
-        <div class="exp-grid" style="display:grid;grid-template-columns:60px 1fr;gap:36px;align-items:flex-start">
-          <div style="width:60px;height:60px;background:#1c3f7c;border:2.5px solid #0f0f0f;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:-1px">M</span>
-          </div>
-          <div>
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px">
-              <div>
-                <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin:0 0 8px;letter-spacing:-0.5px">Mimetria <span style="font-size:16px;color:#888;font-weight:500">→ evolucionó a Owtli</span></h3>
-                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#1c3f7c;color:#fff;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.mimetria.role">Co-fundador · Full Stack</span>
-                  <span style="font-size:12px;color:#666;font-weight:500">Alicante, España</span>
-                </div>
-              </div>
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#e86a0a;color:#fff;padding:5px 14px;border:2px solid #0f0f0f;white-space:nowrap">Nov 2025 – Feb 2026</span>
+      <article class="card proj proj--feature proj--impulsa proj--axis" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/axis.jpg" alt="Pantalla de inicio de Owtli Axis con el chat de IA" width="1600" height="800" loading="lazy"></div>
+        <div class="proj__body">
+          <div class="proj__main">
+            <div class="proj__head">
+              <h3>Owtli Axis</h3>
+              <span class="chip chip--tint"><span class="status__dot status__dot--wip" aria-hidden="true"></span><span data-i18n="tag.wip">En desarrollo</span></span>
             </div>
-            <div style="height:2px;background:#f0ede7;margin:0 0 18px"></div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;gap:14px;align-items:flex-start">
-                <div style="min-width:8px;height:8px;background:#1c3f7c;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-                <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.mimetria.p1" data-i18n-html="true">Cofundé Mimetria con dos socios, con el objetivo de <strong>unificar CRMs, bases de datos y herramientas corporativas</strong> para medianas y grandes empresas. Mantuvimos reuniones con potenciales clientes, presentamos propuestas de servicios y gestionamos despliegues de <strong>Google Workspace</strong> y <strong>Google Cloud Admin Console</strong>.</p>
+            <p data-i18n="proj.axis" data-html>Plataforma de IA que se instala <strong>en el servidor de la empresa</strong>: sus datos no salen de casa. Reúne chat con los modelos, base de conocimiento y las automatizaciones de Impulsa en un solo sitio.</p>
+            <ul class="proj__points">
+              <li data-i18n="proj.axis.p1" data-html><strong>DataCopilot</strong>: preguntas en lenguaje natural a la base de datos interna, con permisos por rol y anonimización.</li>
+              <li data-i18n="proj.axis.p2" data-html>Módulos con <strong>licencia offline</strong> firmada (Ed25519), sin depender de un servidor de licencias.</li>
+              <li data-i18n="proj.axis.p3" data-html>Impulsa embebido con acceso de un solo uso. Ahora: migración del frontend a React, en equipo.</li>
+            </ul>
+          </div>
+          <div class="proj__side">
+            <div class="axis" aria-label="Módulos de Owtli Axis">
+              <div class="axis__stack">
+                <span class="axis__mod axis__mod--core">Core AI<small data-i18n="axis.core">chat · conocimiento</small></span>
+                <span class="axis__mod">DataCopilot<small>NL → SQL</small></span>
+                <span class="axis__mod axis__mod--imp">Impulsa<small data-i18n="axis.auto">automatizaciones</small></span>
+                <span class="axis__mod">WhatsApp<small data-i18n="axis.mod">módulo</small></span>
+                <span class="axis__mod">Owtli Agent<small data-i18n="axis.tel">telemetría</small></span>
+                <span class="axis__base"><svg class="icon"><use href="#i-server"/></svg><span data-i18n="axis.base">Servidor del cliente</span></span>
               </div>
-              <div style="display:flex;gap:14px;align-items:flex-start">
-                <div style="min-width:8px;height:8px;background:#1c3f7c;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-                <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.mimetria.p2" data-i18n-html="true">Desarrollé <strong>EneccDubai</strong>, nuestro primer cliente real: una plataforma inmobiliaria para Dubai con integración de la API de Airbnb para gestión automatizada de propiedades y reservas.</p>
-              </div>
-              <div style="display:flex;gap:14px;align-items:flex-start">
-                <div style="min-width:8px;height:8px;background:#1c3f7c;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-                <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.mimetria.p3" data-i18n-html="true">En febrero de 2026, al decidir los socios no continuar, <strong>adquirí el proyecto íntegramente</strong> y lo reorienté hacia IA y automatización, relanzándolo como <strong>Owtli</strong>.</p>
-              </div>
+            </div>
+            <div class="proj__foot">
+              <ul class="tags"><li>Python</li><li>FastAPI</li><li>React</li><li>TypeScript</li><li>PostgreSQL</li><li>Docker</li></ul>
+              <span class="proj__note" data-i18n="proj.axis.note">Basada en Open WebUI</span>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- KHRONODESK -->
-      <div data-reveal="left" data-delay="0.15" class="exp-card-pad" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;padding:44px 48px">
-        <div class="exp-grid" style="display:grid;grid-template-columns:60px 1fr;gap:36px;align-items:flex-start">
-          <div style="width:60px;height:60px;background:#e86a0a;border:2.5px solid #0f0f0f;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff">K</span>
-          </div>
-          <div>
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px">
-              <div>
-                <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin:0 0 8px;letter-spacing:-0.5px">Khronodesk</h3>
-                <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#f0ede7;color:#0f0f0f;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.khrono.role">Proyecto Personal</span>
-              </div>
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#e86a0a;color:#fff;padding:5px 14px;border:2px solid #0f0f0f;white-space:nowrap">Jun – Sep 2025</span>
-            </div>
-            <div style="height:2px;background:#f0ede7;margin:0 0 18px"></div>
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <div style="min-width:8px;height:8px;background:#e86a0a;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-              <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.khrono.p1" data-i18n-html="true">Plataforma SaaS con <strong>Inteligencia Artificial</strong> para convertir DMs de WhatsApp e Instagram en reservas reales. Automatiza la gestión de citas para negocios locales mediante integración con <strong>WhatsApp Business API</strong> usando Baileys, con confirmaciones automáticas y recordatorios.</p>
-            </div>
+      <article class="card proj proj--half" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/setter.jpg" alt="Web de Setterapp" width="1400" height="700" loading="lazy"></div>
+        <div class="proj__body">
+          <div class="proj__head"><h3>Setterapp</h3><span class="chip chip--green" data-i18n="tag.prod">En producción</span></div>
+          <p data-i18n="proj.setter">Setter de IA para Instagram y WhatsApp: responde DMs al instante, califica leads y agenda reuniones 24/7, cubriendo el ciclo de ventas completo.</p>
+          <div class="proj__foot">
+            <ul class="tags"><li>React</li><li>Node.js</li><li>WhatsApp API</li></ul>
+            <a class="link proj__stretch" href="https://setterapp.ai/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- UNIVERSIDAD -->
-      <div data-reveal="right" data-delay="0.2" class="exp-card-pad" style="background:#e4ebf8;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;padding:44px 48px">
-        <div class="exp-grid" style="display:grid;grid-template-columns:60px 1fr;gap:36px;align-items:flex-start">
-          <div style="width:60px;height:60px;background:#1c3f7c;border:2.5px solid #0f0f0f;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:#fff;text-align:center">UA</span>
-          </div>
-          <div>
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px">
-              <div>
-                <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;margin:0 0 8px;letter-spacing:-0.5px">Universidad de Alicante</h3>
-                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#1c3f7c;color:#fff;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.edu.degree">Ingeniería Informática</span>
-                <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#e86a0a;color:#fff;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="exp.edu.spec">Especialización en Ing. del Software</span>
-                  <span style="font-size:12px;color:#444;font-weight:500">Alicante, España</span>
-                </div>
-              </div>
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#1c3f7c;color:#fff;padding:5px 14px;border:2px solid #0f0f0f;white-space:nowrap">2022 – 2027</span>
-            </div>
-            <div style="height:2px;background:rgba(28,63,124,0.15);margin:0 0 18px"></div>
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <div style="min-width:8px;height:8px;background:#1c3f7c;border:2px solid #0f0f0f;margin-top:7px;flex-shrink:0"></div>
-              <p style="margin:0;font-size:15px;line-height:1.75;color:#2a2a2a" data-i18n="exp.edu.p1" data-i18n-html="true">Ejercí roles de <strong>liderazgo</strong> en proyectos de software académicos, implementando metodologías <strong>SCRUM</strong> y coordinando equipos de desarrollo para maximizar la calidad y eficiencia de los entregables.</p>
-            </div>
+      <article class="card proj proj--half" data-reveal style="--d:.08s">
+        <div class="proj__media"><img src="uploads/opt/enecc.jpg" alt="Web de EneccDubai" width="1400" height="764" loading="lazy"></div>
+        <div class="proj__body">
+          <div class="proj__head"><h3>EneccDubai</h3><span class="chip chip--green" data-i18n="tag.prod">En producción</span></div>
+          <p data-i18n="proj.enecc">Web para una inmobiliaria de Dubái con la API de Airbnb integrada: sincroniza propiedades, disponibilidad y reservas en un solo sitio.</p>
+          <div class="proj__foot">
+            <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Airbnb API</li></ul>
+            <a class="link proj__stretch" href="https://www.eneccdubai.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
           </div>
         </div>
-      </div>
+      </article>
+
+      <article class="card proj proj--half" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/khronodesk.jpg" alt="Web de Khronodesk" width="1400" height="769" loading="lazy"></div>
+        <div class="proj__body">
+          <div class="proj__head"><h3>Khronodesk</h3><span class="chip chip--tint" data-i18n="tag.personal">Personal</span></div>
+          <p data-i18n="proj.khrono">SaaS con IA que convierte DMs de WhatsApp e Instagram en reservas. Confirmaciones automáticas, recordatorios y control de no-shows para negocios locales.</p>
+          <div class="proj__foot">
+            <ul class="tags"><li>IA</li><li>WhatsApp API</li><li>Baileys</li></ul>
+            <a class="link proj__stretch" href="https://www.khronodesk.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card proj proj--half proj--oss" data-reveal style="--d:.08s">
+        <div class="proj__media">
+          <div class="oss">
+            <svg class="icon--fill" aria-hidden="true"><use href="#i-github"/></svg>
+            <b>Open source</b>
+            <span class="chip chip--orange">MIT License</span>
+          </div>
+        </div>
+        <div class="proj__body">
+          <div class="proj__head"><h3>Tauri + n8n Starter</h3><span class="chip chip--tint">Template</span></div>
+          <p data-i18n="proj.tauri">Plantilla de app de escritorio que integra Tauri (Rust) con n8n para ejecutar automatizaciones en local, con los flujos reflejados en un frontend React.</p>
+          <div class="proj__foot">
+            <ul class="tags"><li>Tauri / Rust</li><li>React</li><li>TypeScript</li><li>n8n</li><li>Docker</li></ul>
+            <a class="link proj__stretch" href="https://github.com/MarcosBentivegna" target="_blank" rel="noopener"><span data-i18n="proj.gh">Ver en GitHub</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ PROYECTOS ═════════════════════════════ -->
-<section id="proyectos" class="section-pad" style="padding:100px 52px;background:#1c3f7c;border-top:3px solid #0f0f0f;border-bottom:3px solid #0f0f0f;position:relative;overflow:hidden">
-  <!-- parallax bg shapes -->
-  <div id="proj-bg-1" style="position:absolute;width:400px;height:400px;border:2px solid rgba(255,255,255,0.04);border-radius:50%;top:-100px;right:-100px;pointer-events:none;will-change:transform"></div>
-  <div id="proj-bg-2" style="position:absolute;width:250px;height:250px;border:2px solid rgba(232,106,10,0.08);border-radius:50%;bottom:-50px;left:5%;pointer-events:none;will-change:transform"></div>
-
-  <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2">
-    <div class="section-header" style="display:flex;align-items:flex-end;gap:20px;margin-bottom:64px" data-reveal="up">
-      <div style="width:5px;height:64px;background:#e86a0a;border:2px solid #0f0f0f"></div>
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#e86a0a;margin-bottom:8px" data-i18n="proj.section">02 / Portfolio</div>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(38px,4.5vw,60px);letter-spacing:-2px;line-height:1;margin:0;color:#fff" data-i18n="proj.title">Proyectos</h2>
-      </div>
-    </div>
-
-    <div class="proj-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px">
-
-      <!-- Owtli Automations -->
-      <div class="tilt-card" data-reveal="up" data-delay="0.08" style="background:#0d1f3a;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #e86a0a;display:flex;flex-direction:column">
-        <div style="overflow:hidden;height:200px;border-bottom:3px solid #0f0f0f;position:relative">
-          <img src="uploads/owtliautomations.png" alt="Owtli Automations" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" class="card-img">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(13,31,58,0.6) 100%)"></div>
-        </div>
-        <div style="padding:28px 32px;display:flex;flex-direction:column;gap:16px;flex:1">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin:0;letter-spacing:-0.5px;color:#fff">Owtli Automations</h3>
-            <div style="display:flex;align-items:center;gap:6px;background:#e86a0a;border:2px solid #0f0f0f;padding:4px 12px">
-              <span style="width:5px;height:5px;border-radius:50%;background:#fff;display:inline-block;animation:blink 2s ease-in-out infinite"></span>
-              <span style="font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1.5px">Activo</span>
-            </div>
-          </div>
-          <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,0.65);margin:0" data-i18n="proj.owtli.desc">SaaS de automatización empresarial con motor n8n dedicado por cliente. Asistente de IA que genera, modifica y diagnostica flujos en lenguaje natural. +37 plantillas predeterminadas, canales de voz y WhatsApp, dashboards de ROI y facturación integrada.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;border-top:2px solid rgba(255,255,255,0.1)">
-            <div style="display:flex;flex-wrap:wrap;gap:8px">
-              <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);padding:4px 12px;color:#fff">n8n</span>
-              <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);padding:4px 12px;color:#fff">React</span>
-              <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);padding:4px 12px;color:#fff">Supabase</span>
-              <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);padding:4px 12px;color:#fff">DeepSeek</span>
-            </div>
-            <a href="https://owtli.com/owtliautomations" target="_blank" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e86a0a;border-bottom:2px solid #e86a0a;padding-bottom:1px;transition:opacity 0.15s" style-hover="opacity:0.75" data-i18n="proj.btn.view">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Setterapp -->
-      <div class="tilt-card" data-reveal="up" data-delay="0.13" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;display:flex;flex-direction:column">
-        <div style="overflow:hidden;height:200px;border-bottom:3px solid #0f0f0f;position:relative">
-          <img src="uploads/setter_img-1781792431512.png" alt="Setterapp" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" class="card-img">
-          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,0.3) 100%)"></div>
-        </div>
-        <div style="padding:28px 32px;display:flex;flex-direction:column;gap:16px;flex:1">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin:0;letter-spacing:-0.5px">Setterapp</h3>
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:#d4f5e2;color:#0f5c30;padding:4px 12px;border:2px solid #0f0f0f;white-space:nowrap">Producción</span>
-          </div>
-          <p style="font-size:14px;line-height:1.75;color:#555;margin:0" data-i18n="proj.setter.desc">Setter de IA para Instagram y WhatsApp. Responde DMs al instante, califica leads y agenda reuniones 24/7. Ciclo de ventas completo desde el primer contacto hasta el cierre.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;border-top:2px solid #f0ede7">
-            <div style="display:flex;flex-wrap:wrap;gap:8px">
-              <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">React</span>
-              <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">Node.js</span>
-              <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">WhatsApp API</span>
-            </div>
-            <a href="https://setterapp.ai/" target="_blank" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1c3f7c;border-bottom:2px solid #1c3f7c;padding-bottom:1px;transition:color 0.15s,border-color 0.15s" style-hover="color:#e86a0a;border-bottom-color:#e86a0a" data-i18n="proj.btn.view">Ver proyecto →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tauri n8n Starter -->
-      <div class="tilt-card proj-card-wide" data-reveal="up" data-delay="0.18" style="grid-column:1/-1;background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;display:flex;flex-direction:row;overflow:hidden">
-        <div style="width:340px;flex-shrink:0;background:#0f0f0f;border-right:3px solid #0f0f0f;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:36px 40px;gap:16px">
-          <div style="display:flex;align-items:center;gap:14px">
-            <div style="width:48px;height:48px;background:#e86a0a;border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </div>
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:-0.5px">Open Source</span>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);padding:4px 10px;color:#e86a0a">MIT License</span>
-            <span style="font-size:11px;font-weight:700;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.15);padding:4px 10px;color:#fff">Template</span>
-          </div>
-          <a href="https://github.com/MarcosBentivegna" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e86a0a;border-bottom:2px solid #e86a0a;padding-bottom:1px;margin-top:4px;transition:opacity 0.15s" style-hover="opacity:0.75">Ver en GitHub →</a>
-        </div>
-        <div style="padding:36px 40px;display:flex;flex-direction:column;gap:16px;flex:1">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
-            <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin:0;letter-spacing:-0.5px">Tauri + n8n Starter</h3>
-            <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:#e4ebf8;color:#0f0f0f;padding:4px 12px;border:2px solid #0f0f0f;white-space:nowrap">Open Source</span>
-          </div>
-          <p style="font-size:14px;line-height:1.75;color:#555;margin:0" data-i18n="proj.tauri.desc" data-i18n-html="true">Template de aplicación de escritorio que integra <strong>Tauri (Rust)</strong> con <strong>n8n</strong> para automatización local de flujos de trabajo. Configura tu cuenta de n8n, añade tu API key y tienes un entorno completo para construir automatizaciones que se reflejan en el frontend React.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;border-top:2px solid #f0ede7">
-            <div style="display:flex;flex-wrap:wrap;gap:8px">
-              <span style="font-size:11px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:4px 12px">Tauri / Rust</span>
-              <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">React</span>
-              <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">TypeScript</span>
-              <span style="font-size:11px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:4px 12px">n8n</span>
-              <span style="font-size:11px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:4px 12px">Docker</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Ver todos los proyectos toggle -->
-    <div style="text-align:center;margin-top:32px" data-reveal="up">
-      <button id="btn-ver-todos" data-i18n="btn.ver-todos" style="background:transparent;color:#fff;font-weight:700;font-size:13px;padding:12px 28px;border:2.5px solid rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;cursor:pointer;transition:background 0.2s,border-color 0.2s" style-hover="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.6)">Ver todos los proyectos ↓</button>
-    </div>
-
-    <!-- Hidden projects (toggle) -->
-    <div id="hidden-projects" style="display:none;margin-top:22px">
-      <div class="proj-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px">
-
-        <!-- EneccDubai -->
-        <div class="tilt-card" data-reveal="up" data-delay="0.08" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;display:flex;flex-direction:column">
-          <div style="overflow:hidden;height:200px;border-bottom:3px solid #0f0f0f;position:relative">
-            <img src="uploads/enecc_img-1781792425252.png" alt="EneccDubai" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" class="card-img">
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,0.4) 100%)"></div>
-          </div>
-          <div style="padding:28px 32px;display:flex;flex-direction:column;gap:16px;flex:1">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start">
-              <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin:0;letter-spacing:-0.5px">EneccDubai</h3>
-              <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:#d4f5e2;color:#0f5c30;padding:4px 12px;border:2px solid #0f0f0f;white-space:nowrap">Producción</span>
-            </div>
-            <p style="font-size:14px;line-height:1.75;color:#555;margin:0" data-i18n="proj.enecc.desc">Landing page para inmobiliaria de Dubai con integración API de Airbnb para sincronización automática de propiedades, gestión de disponibilidad y reservas centralizadas.</p>
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;border-top:2px solid #f0ede7">
-              <div style="display:flex;flex-wrap:wrap;gap:8px">
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">Next.js</span>
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">TypeScript</span>
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">Airbnb API</span>
-              </div>
-              <a href="https://www.eneccdubai.com/" target="_blank" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1c3f7c;border-bottom:2px solid #1c3f7c;padding-bottom:1px;transition:color 0.15s,border-color 0.15s" style-hover="color:#e86a0a;border-bottom-color:#e86a0a" data-i18n="proj.btn.view">Ver proyecto →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Khronodesk -->
-        <div class="tilt-card" data-reveal="up" data-delay="0.18" style="background:#fff;border:3px solid #0f0f0f;box-shadow:6px 6px 0 #0f0f0f;display:flex;flex-direction:column">
-          <div style="overflow:hidden;height:200px;border-bottom:3px solid #0f0f0f;position:relative">
-            <img src="uploads/khronodesk_img-1781792434746.png" alt="Khronodesk" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)" class="card-img">
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,0.3) 100%)"></div>
-          </div>
-          <div style="padding:28px 32px;display:flex;flex-direction:column;gap:16px;flex:1">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start">
-              <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin:0;letter-spacing:-0.5px">Khronodesk</h3>
-              <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:#f0ede7;color:#0f0f0f;padding:4px 12px;border:2px solid #0f0f0f;white-space:nowrap">Personal</span>
-            </div>
-            <p style="font-size:14px;line-height:1.75;color:#555;margin:0" data-i18n="proj.khrono.desc">SaaS con IA que convierte DMs de WhatsApp e Instagram en reservas reales. Confirmaciones automáticas, recordatorios y gestión de no-shows para negocios locales.</p>
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:12px;border-top:2px solid #f0ede7">
-              <div style="display:flex;flex-wrap:wrap;gap:8px">
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">IA</span>
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">WhatsApp API</span>
-                <span style="font-size:11px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:4px 12px">Baileys</span>
-              </div>
-              <a href="https://www.khronodesk.com/" target="_blank" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1c3f7c;border-bottom:2px solid #1c3f7c;padding-bottom:1px;transition:color 0.15s,border-color 0.15s" style-hover="color:#e86a0a;border-bottom-color:#e86a0a" data-i18n="proj.btn.view">Ver proyecto →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════ MARQUEE 2 (inverso) ═════════════════════════════ -->
-<div class="marquee-track" data-speed="28" data-direction="reverse" style="overflow:hidden;border-top:3px solid #0f0f0f;border-bottom:3px solid #0f0f0f;background:#0f0f0f;padding:13px 0">
-  <div class="marquee-inner" style="display:flex;white-space:nowrap;will-change:transform">
-    <span class="marquee-content" style="font-family:'Syne',sans-serif;font-weight:800;font-size:13px;letter-spacing:3px;color:#e86a0a;text-transform:uppercase;padding-right:80px">JAVASCRIPT &nbsp;·&nbsp; TYPESCRIPT &nbsp;·&nbsp; C# &nbsp;·&nbsp; C++ &nbsp;·&nbsp; JAVA &nbsp;·&nbsp; SQL &nbsp;·&nbsp; GO &nbsp;·&nbsp; REACT &nbsp;·&nbsp; NEXT.JS &nbsp;·&nbsp; VUE.JS &nbsp;·&nbsp; ANGULAR &nbsp;·&nbsp; VERCEL &nbsp;·&nbsp; CLOUDFLARE &nbsp;·&nbsp; LINUX &nbsp;·&nbsp; FREEBSD &nbsp;·&nbsp; WINDOWS SERVER &nbsp;·&nbsp; SCRUM &nbsp;·&nbsp; POSTGRESQL &nbsp;·&nbsp; FIREBASE &nbsp;·&nbsp; POCKETBASE &nbsp;·&nbsp;</span>
+<div class="marquee marquee--ink" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__group"><span>JavaScript</span><i></i><span>TypeScript</span><i></i><span>C#</span><i></i><span>C++</span><i></i><span>Java</span><i></i><span>Go</span><i></i><span>SQL</span><i></i><span>React</span><i></i><span>Next.js</span><i></i><span>Vue.js</span><i></i><span>Angular</span><i></i><span>Tauri</span><i></i><span>PostgreSQL</span><i></i><span>Cloudflare</span><i></i><span>Linux</span><i></i></div>
+    <div class="marquee__group"><span>JavaScript</span><i></i><span>TypeScript</span><i></i><span>C#</span><i></i><span>C++</span><i></i><span>Java</span><i></i><span>Go</span><i></i><span>SQL</span><i></i><span>React</span><i></i><span>Next.js</span><i></i><span>Vue.js</span><i></i><span>Angular</span><i></i><span>Tauri</span><i></i><span>PostgreSQL</span><i></i><span>Cloudflare</span><i></i><span>Linux</span><i></i></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════ SKILLS ════════════════════════════════ -->
-<section id="skills" class="section-pad" style="padding:100px 52px;background:#f0ede7">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="section-header" style="display:flex;align-items:flex-end;gap:20px;margin-bottom:64px" data-reveal="up">
-      <div style="width:5px;height:64px;background:#1c3f7c;border:2px solid #0f0f0f"></div>
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#e86a0a;margin-bottom:8px" data-i18n="skills.section">03 / Stack</div>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(38px,4.5vw,60px);letter-spacing:-2px;line-height:1;margin:0" data-i18n="skills.title">Habilidades</h2>
+<!-- ═════════════ STACK ═════════════ -->
+<section class="section" id="stack" aria-labelledby="stack-title">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <h2 id="stack-title">Stack<span class="dot">.</span></h2>
+      <p data-i18n="stack.lead">Las herramientas con las que construyo cada día, de la base de datos al agente de voz.</p>
+    </header>
+
+    <div class="spec" data-reveal>
+      <div class="spec__row spec__row--hot">
+        <h3 data-i18n="stack.ai">IA y automatización</h3>
+        <ul class="tags"><li>Owtli Runner</li><li>n8n</li><li>Playwright</li><li data-i18n="stack.local">LLMs en local (self-hosted)</li><li>RAG</li><li>AI Agents</li><li>NL → SQL</li><li>DeepSeek</li><li>WhatsApp Business API</li><li>Baileys</li><li>Vapi (Voice AI)</li><li>Twilio</li><li>Stripe</li></ul>
       </div>
-    </div>
-    <div data-reveal="up" style="margin-bottom:22px;background:#e86a0a;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#fff;padding-bottom:12px;border-bottom:2.5px solid rgba(255,255,255,0.4);margin-bottom:16px" data-i18n="skills.ia">IA & Automatización</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.1s">n8n</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.14s">LLMs Locales</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.18s">RAG</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.22s">AI Agents</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.26s">DeepSeek</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.3s">WhatsApp API</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.34s">Vapi (Voice AI)</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.38s">Twilio</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.42s">Stripe</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.46s">Supabase</span>
-        <span class="skill-tag" style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.5s">CI/CD</span>
+      <div class="spec__row">
+        <h3 data-i18n="stack.langs">Lenguajes</h3>
+        <ul class="tags"><li>JavaScript</li><li>TypeScript</li><li>Python</li><li>C#</li><li>C++</li><li>Java</li><li>Go</li><li>SQL</li></ul>
       </div>
-    </div>
-    <div class="skills-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
-      <div data-reveal="up" data-delay="0.05" style="background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;padding-bottom:12px;border-bottom:2.5px solid #0f0f0f;margin-bottom:16px" data-i18n="skills.langs">Lenguajes</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.1s">JavaScript</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.15s">TypeScript</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.2s">C#</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.25s">C++</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.3s">Java</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.35s">SQL</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.4s">Go</span>
-        </div>
+      <div class="spec__row">
+        <h3>Frameworks</h3>
+        <ul class="tags"><li>React</li><li>Next.js</li><li>Vue.js</li><li>Angular</li><li>Node.js</li><li>FastAPI</li><li>Tauri (Rust)</li></ul>
       </div>
-      <div data-reveal="up" data-delay="0.1" style="background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;padding-bottom:12px;border-bottom:2.5px solid #0f0f0f;margin-bottom:16px" data-i18n="skills.frameworks">Frameworks</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.1s">React</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.18s">Next.js</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.26s">Vue.js</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.34s">Angular</span>
-        </div>
+      <div class="spec__row">
+        <h3 data-i18n="stack.data">Datos y BaaS</h3>
+        <ul class="tags"><li>PostgreSQL</li><li>Supabase</li><li>Firebase</li><li>Pocketbase</li></ul>
       </div>
-      <div data-reveal="up" data-delay="0.15" style="background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;padding-bottom:12px;border-bottom:2.5px solid #0f0f0f;margin-bottom:16px" data-i18n="skills.devops">DevOps & Cloud</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.1s">Docker</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.2s">GitHub Actions</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.3s">Cloudflare Workers</span>
-        </div>
+      <div class="spec__row">
+        <h3 data-i18n="stack.devops">DevOps y deploy</h3>
+        <ul class="tags"><li>Docker</li><li>GitHub Actions</li><li>CI/CD</li><li>Cloudflare Workers</li><li>Cloudflare Pages</li><li>Vercel</li><li>Linux</li><li>FreeBSD</li><li>Windows Server</li></ul>
       </div>
-      <div data-reveal="up" data-delay="0.05" style="background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;padding-bottom:12px;border-bottom:2.5px solid #0f0f0f;margin-bottom:16px" data-i18n="skills.baas">BaaS / Bases de Datos</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.12s">Supabase</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.22s">Firebase</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.32s">Pocketbase</span>
-          <span class="skill-tag" style="font-size:12px;font-weight:700;background:#e4ebf8;border:2px solid #0f0f0f;padding:5px 12px;animation-delay:0.42s">PostgreSQL</span>
-        </div>
+      <div class="spec__row">
+        <h3 data-i18n="stack.env">Entornos y métodos</h3>
+        <ul class="tags"><li>Cursor</li><li>VS Code</li><li>Visual Studio</li><li>IntelliJ</li><li>SCRUM</li></ul>
       </div>
-      <div data-reveal="up" data-delay="0.1" style="background:#e86a0a;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#fff;padding-bottom:12px;border-bottom:2.5px solid rgba(255,255,255,0.5);margin-bottom:16px" data-i18n="skills.deploy">Deploy / OS</div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px">Vercel</span>
-          <span style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px">Cloudflare</span>
-          <span style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px">Linux</span>
-          <span style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px">FreeBSD</span>
-          <span style="font-size:12px;font-weight:700;background:#fff;border:2px solid #0f0f0f;padding:5px 12px">Windows Server</span>
-        </div>
-      </div>
-      <div data-reveal="up" data-delay="0.15" style="background:#1c3f7c;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#e86a0a;padding-bottom:12px;border-bottom:2.5px solid rgba(255,255,255,0.2);margin-bottom:20px">Idiomas</div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-size:14px;font-weight:600;color:#fff">Español</span>
-            <span style="font-size:10px;font-weight:700;background:#e86a0a;color:#fff;padding:4px 10px;border:2px solid #0f0f0f;text-transform:uppercase;letter-spacing:1px">Nativo</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-size:14px;font-weight:600;color:#fff">Catalán</span>
-            <span style="font-size:10px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 10px;border:2px solid rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px">Avanzado</span>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between">
-            <span style="font-size:14px;font-weight:600;color:#fff">Inglés</span>
-            <span style="font-size:10px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 10px;border:2px solid rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px">Intermedio</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div data-reveal="up" data-delay="0.1" style="margin-top:22px;background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:24px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
-      <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;white-space:nowrap" data-i18n="skills.methods">Metodologías y entornos:</span>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <span style="font-size:12px;font-weight:700;background:#f0ede7;border:2px solid #0f0f0f;padding:5px 12px">SCRUM</span>
+      <div class="spec__row">
+        <h3 data-i18n="stack.lang">Idiomas</h3>
+        <ul class="langs">
+          <li><span data-i18n="l.es">Español</span><small data-i18n="l.native">Nativo</small></li>
+          <li><span data-i18n="l.ca">Catalán</span><small data-i18n="l.adv">Avanzado</small></li>
+          <li><span data-i18n="l.en">Inglés</span><small data-i18n="l.mid">Intermedio</small></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CERTIFICACIONES ═══════════════════════ -->
-<section id="certificaciones" class="section-pad" style="padding:100px 52px;background:#f0ede7;border-top:3px solid #0f0f0f">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="section-header" style="display:flex;align-items:flex-end;gap:20px;margin-bottom:64px" data-reveal="up">
-      <div style="width:5px;height:64px;background:#e86a0a;border:2px solid #0f0f0f"></div>
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#e86a0a;margin-bottom:8px" data-i18n="certs.section">04 / Certificaciones</div>
-        <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(38px,4.5vw,60px);letter-spacing:-2px;line-height:1;margin:0" data-i18n="certs.title">Formación</h2>
+<!-- ═════════════ CONTACTO ═════════════ -->
+<section class="section section--blue on-blue" id="contacto" aria-labelledby="contact-title" style="border-bottom:0">
+  <div class="wrap contact">
+    <div data-reveal>
+      <h2 id="contact-title" data-i18n="contact.title" data-html>¿Habla&shy;mos<span>?</span></h2>
+      <p class="contact__desc" data-i18n="contact.desc">Abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Si tienes un proceso que automatizar o quieres llevar IA a tu empresa, escríbeme.</p>
+      <div class="mailbox">
+        <a href="mailto:marcosbentivegna@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>marcosbentivegna@gmail.com</a>
+        <button type="button" id="copy-btn" data-copy="marcosbentivegna@gmail.com">
+          <svg class="icon"><use href="#i-copy"/></svg><span data-i18n="copy">Copiar</span>
+        </button>
       </div>
     </div>
-    <div class="skills-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
-      <div data-reveal="up" data-delay="0.05" style="grid-column:1/-1;background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:28px 32px">
-        <div style="display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap">
-          <div style="width:56px;height:56px;background:#1c3f7c;border:2.5px solid #0f0f0f;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#fff;text-align:center">UA</span>
-          </div>
-          <div style="flex:1;min-width:200px">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
-              <div>
-                <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;margin:0 0 8px;letter-spacing:-0.5px">Universidad de Alicante</h3>
-                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                  <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:#1c3f7c;color:#fff;padding:4px 12px;border:2px solid #0f0f0f" data-i18n="certs.swe.school">Especialización en Ingeniería del Software</span>
-                  <span style="font-size:11px;font-weight:600;color:#666">2025 – 2026</span>
-                </div>
-              </div>
-            </div>
-            <div style="height:2px;background:#f0ede7;margin:16px 0"></div>
-            <p style="font-size:14px;line-height:1.75;color:#555;margin:0" data-i18n="certs.swe.desc">Especialización cursada dentro del Grado en Ingeniería Informática. Asignaturas avanzadas en arquitectura de software, diseño de sistemas distribuidos, metodologías ágiles, calidad del software e ingeniería de requisitos.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <ul class="contact__list" data-reveal style="--d:.08s">
+      <li><a class="cl" href="tel:+34663917454">
+        <span class="cl__ic"><svg class="icon"><use href="#i-phone"/></svg></span>
+        <span class="cl__txt"><small data-i18n="c.phone">Teléfono</small><b>+34 663 917 454</b></span>
+        <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+      </a></li>
+      <li><a class="cl cl--orange" href="https://www.linkedin.com/in/marcosbentivegna" target="_blank" rel="noopener">
+        <span class="cl__ic"><svg class="icon icon--fill"><use href="#i-linkedin"/></svg></span>
+        <span class="cl__txt"><small>LinkedIn</small><b>in/marcosbentivegna</b></span>
+        <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+      </a></li>
+      <li><a class="cl" href="https://github.com/MarcosBentivegna" target="_blank" rel="noopener">
+        <span class="cl__ic"><svg class="icon icon--fill"><use href="#i-github"/></svg></span>
+        <span class="cl__txt"><small>GitHub</small><b>MarcosBentivegna</b></span>
+        <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+      </a></li>
+      <li><a class="cl" href="uploads/cv-marcos-bentivegna.pdf" download="CV_Marcos_Bentivegna.pdf">
+        <span class="cl__ic"><svg class="icon"><use href="#i-download"/></svg></span>
+        <span class="cl__txt"><small>CV · PDF</small><b data-i18n="c.cv">Descargar currículum</b></span>
+        <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+      </a></li>
+    </ul>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CONTACTO ══════════════════════════════ -->
-<section id="contacto" class="section-pad" style="padding:100px 52px;background:#1c3f7c;border-top:3px solid #0f0f0f">
-  <div class="contact-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:flex-start">
-    <div data-reveal="up">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:#e86a0a;margin-bottom:16px" data-i18n="contact.section">05 / Contacto</div>
-      <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,5vw,72px);letter-spacing:-2.5px;line-height:0.95;color:#fff;margin:0 0 28px" data-i18n="contact.title">¿Hablamos?</h2>
-      <p style="font-size:17px;color:rgba(255,255,255,0.65);line-height:1.8;max-width:420px;margin:0 0 40px" data-i18n="contact.desc">Abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Si tienes un problema de automatización o quieres explorar IA en tu empresa, escríbeme.</p>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=marcosbentivegna@gmail.com" target="_blank" class="mag-btn" style="display:inline-flex;align-items:center;gap:10px;background:#e86a0a;color:#fff;font-weight:700;font-size:14px;padding:14px 32px;border:2.5px solid #0f0f0f;box-shadow:4px 4px 0 #0f0f0f;text-transform:uppercase;letter-spacing:1px" data-i18n="contact.btn">Enviar mensaje →</a>
-    </div>
-    <div data-reveal="up" data-delay="0.1" style="display:flex;flex-direction:column;gap:16px">
-      <a href="mailto:marcosbentivegna@gmail.com" style="display:block;background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:22px 28px;transition:box-shadow 0.12s,transform 0.12s" style-hover="box-shadow:2px 2px 0 #0f0f0f;transform:translate(3px,3px)">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;margin-bottom:6px">Email</div>
-        <div style="font-size:16px;font-weight:600;color:#0f0f0f">marcosbentivegna@gmail.com</div>
-      </a>
-      <a href="tel:+34663917454" style="display:block;background:#fff;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:22px 28px;transition:box-shadow 0.12s,transform 0.12s" style-hover="box-shadow:2px 2px 0 #0f0f0f;transform:translate(3px,3px)">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#1c3f7c;margin-bottom:6px">Teléfono</div>
-        <div style="font-size:16px;font-weight:600;color:#0f0f0f">+34 663 917 454</div>
-      </a>
-      <a href="https://www.linkedin.com/in/marcosbentivegna" target="_blank" style="display:block;background:#e86a0a;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:22px 28px;transition:box-shadow 0.12s,transform 0.12s" style-hover="box-shadow:2px 2px 0 #0f0f0f;transform:translate(3px,3px)">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.75);margin-bottom:6px">LinkedIn</div>
-        <div style="font-size:16px;font-weight:600;color:#fff">linkedin.com/in/marcosbentivegna</div>
-      </a>
-      <a href="https://github.com/MarcosBentivegna" target="_blank" style="display:block;background:#0f0f0f;border:3px solid #0f0f0f;box-shadow:5px 5px 0 #0f0f0f;padding:22px 28px;transition:box-shadow 0.12s,transform 0.12s;display:flex;align-items:center;gap:14px" style-hover="box-shadow:2px 2px 0 #0f0f0f;transform:translate(3px,3px)">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <div>
-          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.5);margin-bottom:6px">GitHub</div>
-          <div style="font-size:16px;font-weight:600;color:#fff">github.com/MarcosBentivegna</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- FOOTER -->
-<footer class="site-footer" style="background:#0d2347;border-top:3px solid #0f0f0f;padding:22px 52px;display:flex;align-items:center;justify-content:space-between">
-  <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.5px;color:#fff">MB<span style="color:#e86a0a">.</span></span>
-  <div class="footer-meta" style="display:flex;align-items:center;gap:28px">
-    <a href="https://github.com/MarcosBentivegna" target="_blank" style="display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;transition:color 0.15s" style-hover="color:#e86a0a">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      GitHub
-    </a>
-    <span style="font-size:12px;color:rgba(255,255,255,0.4);font-weight:500" data-i18n="footer.copyright">© 2026 Marcos Bentivegna Adrián · Alicante, España</span>
+<footer class="footer">
+  <div class="wrap footer__in">
+    <a href="#top" class="logo" aria-label="Volver arriba">MB<span>.</span></a>
+    <nav aria-label="Redes">
+      <a href="https://github.com/MarcosBentivegna" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/marcosbentivegna" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:marcosbentivegna@gmail.com">Email</a>
+    </nav>
+    <span>© <span id="year">2026</span> Marcos Bentivegna Adrián · Alicante</span>
   </div>
 </footer>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}
-}">
-class Component extends DCLogic {
 
-  componentDidMount() {
-    this._initCursor();
-    this._initMobileNav();
-    this._initScrollReveal();
-    this._initParallax();
-    this._initCounters();
-    this._initTextScramble();
-    this._initCardTilt();
-    this._initCardImgZoom();
-    this._initMagneticBtns();
-    this._initMarquees();
-    this._initToggleProjects();
-    this._initDarkToggle();
-    __applyLang(__currentLang);
-  }
+<script>
+(function () {
+  var root = document.documentElement;
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
 
-  componentWillUnmount() {
-    if (this._raf) cancelAnimationFrame(this._raf);
-    window.removeEventListener('scroll', this._scrollHandler);
-    window.removeEventListener('mousemove', this._mouseHandler);
-    document.removeEventListener('mousemove', this._cursorHandler);
-  }
+  /* ── i18n: el español vive en el HTML; aquí solo el inglés ── */
+  var EN = {
+    'skip': 'Skip to content',
+    'nav.exp': 'Experience', 'nav.proj': 'Projects', 'nav.stack': 'Stack', 'nav.contact': 'Contact',
+    'hero.status': 'Open to projects and collaborations',
+    'hero.chip2': 'AI & automation', 'hero.chip3': 'Software engineer',
+    'hero.bio': 'Founder of <strong>Owtli</strong>. I build <strong>Owtli Impulsa</strong>, a SaaS where companies create automations by talking to an AI, and <strong>Owtli Axis</strong>, an AI platform installed on their own server so their data never leaves the building.',
+    'hero.cta1': 'View projects', 'hero.cta2': 'Download CV', 'hero.cta3': 'Get in touch',
+    'hero.sticker': 'Founder · Owtli',
+    'fact.now': 'Now', 'fact.now.v': 'Building Owtli', 'fact.base': 'Based in', 'fact.edu': 'Education', 'fact.edu.v': 'Computer Eng. · UA',
+    'exp.title': 'Experience',
+    'exp.lead': 'From co-founding a startup to building my own: architecture, product and clients, all at once.',
+    'now': 'Current',
+    'exp.owtli.when': 'Feb 2026 – now',
+    'exp.owtli.role': 'Founder & full stack developer',
+    'exp.owtli.b1': 'Own startup', 'exp.owtli.b2': 'AI · Automation',
+    'exp.owtli.p1': 'I founded <strong>Owtli</strong> after fully acquiring Mimetria and refocusing it on <strong>LLM and AI services running on-premise</strong> for companies that need to keep their data on their own infrastructure.',
+    'exp.owtli.p2': 'I launched <strong>Owtli Impulsa</strong> (in production, v3.32): automations created through conversation, running on <strong>Owtli Runner</strong>, an in-house engine I designed to replace n8n.',
+    'exp.owtli.p4': 'I build <strong>Owtli Axis</strong> with the team, our on-premise platform: chat, knowledge base and natural-language queries over the company database.',
+    'exp.owtli.p3': 'I own the <strong>technical architecture</strong>, the product and client relations, while finishing my Computer Engineering degree.',
+    'exp.mim.evo': '→ became Owtli',
+    'exp.mim.role': 'Co-founder & full stack developer · Alicante',
+    'exp.mim.p1': 'I co-founded Mimetria with two partners to <strong>unify CRMs, databases and corporate tools</strong> for mid-size and large companies, with <strong>Google Workspace</strong> and <strong>Google Cloud Admin Console</strong> deployments.',
+    'exp.mim.p2': 'I built <strong>EneccDubai</strong>, our first real client, plus the company landing with an admin panel for projects and an SEO-focused blog.',
+    'exp.mim.p3': 'In February 2026, when my partners decided not to continue, <strong>I acquired the project</strong> and relaunched it as Owtli.',
+    'exp.khr.role': 'Personal project',
+    'exp.khr.p1': '<strong>AI</strong>-powered SaaS that turns WhatsApp and Instagram DMs into real bookings. It automates appointments for local businesses through the <strong>WhatsApp Business API</strong> (Baileys), with automatic confirmations and reminders.',
+    'exp.ua.role': 'BSc in Computer Engineering',
+    'exp.ua.b1': 'Major: Software Engineering',
+    'exp.ua.p1': 'Software Engineering track (2025–2026): <strong>architecture</strong>, distributed systems, agile methods, quality and requirements engineering.',
+    'exp.ua.p2': '<strong>Leadership</strong> roles in degree projects, applying <strong>SCRUM</strong> and coordinating development teams.',
+    'proj.title': 'Projects',
+    'proj.lead': 'Products in production, real clients and some open source.',
+    'tag.active': 'Active', 'tag.prod': 'In production', 'tag.personal': 'Personal',
+    'proj.impulsa': 'Automation SaaS for businesses. The client describes what they need in one sentence, the automation is born right then and takes shape <strong>by talking to an AI assistant</strong> that builds it, test-runs it and repairs it on its own when it fails.',
+    'proj.impulsa.p1': '<strong>Owtli Runner</strong>, an in-house engine that replaced n8n: spec in plain prose, deterministic scripts and Playwright for apps without an API.',
+    'proj.impulsa.p2': 'Regression suite against the production model: <strong>29/29 requests valid</strong> on the first try (Holded, Stripe, HubSpot, Shopify, WhatsApp…).',
+    'proj.impulsa.p3': 'Multi-tenant with per-organization isolation, AI credits in euros via Stripe and continuous deployment.',
+    'f.version': 'Version', 'f.since': 'Since', 'f.since.v': 'Jun 2026',
+    'tag.wip': 'In development',
+    'proj.axis': 'AI platform installed <strong>on the company’s own server</strong>: their data never leaves the building. Chat with the models, a knowledge base and Impulsa automations, all in one place.',
+    'proj.axis.p1': '<strong>DataCopilot</strong>: natural-language questions over the internal database, with role-based permissions and anonymization.',
+    'proj.axis.p2': 'Modules with signed <strong>offline licenses</strong> (Ed25519), no license server required.',
+    'proj.axis.p3': 'Impulsa embedded with single-use access. Now: migrating the frontend to React, as a team.',
+    'proj.axis.note': 'Built on Open WebUI',
+    'axis.core': 'chat · knowledge', 'axis.auto': 'automations', 'axis.tel': 'telemetry', 'axis.mod': 'module', 'axis.base': 'Client server',
+    'proj.setter': 'AI setter for Instagram and WhatsApp: replies to DMs instantly, qualifies leads and books meetings 24/7, covering the whole sales cycle.',
+    'proj.enecc': 'Website for a Dubai real estate agency with the Airbnb API built in: properties, availability and bookings synced in one place.',
+    'proj.khrono': 'AI SaaS that turns WhatsApp and Instagram DMs into bookings. Automatic confirmations, reminders and no-show handling for local businesses.',
+    'proj.tauri': 'Desktop app template that pairs Tauri (Rust) with n8n to run automations locally, with workflows reflected in a React frontend.',
+    'proj.view': 'View project', 'proj.gh': 'View on GitHub',
+    'stack.lead': 'The tools I build with every day, from the database to the voice agent.',
+    'stack.ai': 'AI & automation', 'stack.local': 'Local LLMs (self-hosted)', 'stack.langs': 'Languages',
+    'stack.data': 'Data & BaaS', 'stack.devops': 'DevOps & deploy', 'stack.env': 'Tools & methods', 'stack.lang': 'Languages spoken',
+    'l.es': 'Spanish', 'l.ca': 'Catalan', 'l.en': 'English', 'l.native': 'Native', 'l.adv': 'Advanced', 'l.mid': 'Intermediate',
+    'contact.title': 'Let’s talk<span>?</span>',
+    'contact.desc': 'Open to new opportunities, freelance projects and collaborations. If you have a process to automate or want to bring AI into your company, write to me.',
+    'copy': 'Copy', 'copied': 'Copied', 'c.phone': 'Phone', 'c.cv': 'Download résumé'
+  };
+  var ES = {};
+  var i18nEls = document.querySelectorAll('[data-i18n]');
+  i18nEls.forEach(function (el) { ES[el.dataset.i18n] = el.innerHTML; });
+  ES.copied = 'Copiado';
+  var lang = 'es';
 
-  // ── MOBILE NAV ───────────────────────────────────────────────────
-  _initMobileNav() {
-    const nav = document.querySelector('.site-nav');
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (!nav || !toggle || !links) return;
-
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('nav-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
+  function t(key) { return (lang === 'en' ? EN : ES)[key]; }
+  function applyLang(next) {
+    lang = next === 'en' ? 'en' : 'es';
+    root.lang = lang;
+    i18nEls.forEach(function (el) {
+      var v = (lang === 'en' ? EN : ES)[el.dataset.i18n];
+      if (v != null) el.innerHTML = v;
     });
-
-    links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('nav-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+    document.querySelectorAll('[data-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
     });
+    store.set('lang', lang);
+  }
+  document.querySelectorAll('[data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { applyLang(b.dataset.lang); });
+  });
+  var savedLang = store.get('lang');
+  if (!savedLang && /^en\b/i.test(navigator.language || '')) savedLang = 'en';
+  if (savedLang === 'en') applyLang('en');
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900 && nav.classList.contains('nav-open')) {
-        nav.classList.remove('nav-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+  /* ── Tema ── */
+  var themeBtn = document.getElementById('theme-btn');
+  var metaTheme = document.querySelector('meta[name="theme-color"]');
+  function syncThemeMeta() { metaTheme.setAttribute('content', root.dataset.theme === 'dark' ? '#0f2348' : '#1c3f7c'); }
+  syncThemeMeta();
+  themeBtn.addEventListener('click', function () {
+    var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    var swap = function () { root.dataset.theme = next; store.set('theme', next); syncThemeMeta(); };
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(swap);
+    else swap();
+  });
+
+  /* ── Menú móvil ── */
+  var nav = document.getElementById('nav');
+  var menuBtn = document.getElementById('menu-btn');
+  function setMenu(open) {
+    nav.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('is-open')); });
+  document.querySelectorAll('#nav-links a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); } });
+  matchMedia('(min-width: 921px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+
+  /* ── Enlace activo en el nav ── */
+  var links = {};
+  document.querySelectorAll('.nav__link[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var a = links[e.target.id];
+      if (a && e.isIntersecting) {
+        Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); });
+        a.setAttribute('aria-current', 'true');
       }
     });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  ['experiencia', 'proyectos', 'stack', 'contacto'].forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+
+  /* ── Reveal al hacer scroll ── */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  // ── CUSTOM CURSOR ──────────────────────────────────────────────────
-  _initCursor() {
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    if (!dot || !ring) return;
-
-    let mx = -100, my = -100, rx = -100, ry = -100;
-
-    this._cursorHandler = (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.left = mx + 'px';
-      dot.style.top = my + 'px';
-    };
-    document.addEventListener('mousemove', this._cursorHandler);
-
-    const animRing = () => {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    };
-    animRing();
-
-    // Scale on hover interactive elements
-    document.querySelectorAll('a, button, .tilt-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        dot.style.transform = 'translate(-50%,-50%) scale(2)';
-        dot.style.background = '#e86a0a';
-        ring.style.width = '60px';
-        ring.style.height = '60px';
-        ring.style.opacity = '0.3';
-      });
-      el.addEventListener('mouseleave', () => {
-        dot.style.transform = 'translate(-50%,-50%) scale(1)';
-        ring.style.width = '40px';
-        ring.style.height = '40px';
-        ring.style.opacity = '0.5';
-      });
-    });
-  }
-
-  // ── SCROLL REVEAL ──────────────────────────────────────────────────
-  _initScrollReveal() {
-    const els = document.querySelectorAll('[data-reveal]');
-    const useReducedMotion = window.matchMedia('(max-width: 900px)').matches;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const delay = parseFloat(e.target.dataset.delay || '0');
-        e.target.style.transition = `opacity 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1), transform 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1)`;
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateX(0) translateY(0)';
-        observer.unobserve(e.target);
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    els.forEach(el => {
-      const dir = el.dataset.reveal;
-      el.style.opacity = '0';
-      if (useReducedMotion) {
-        el.style.transform = 'translateY(20px)';
-      } else {
-        el.style.transform = dir === 'left' ? 'translateX(-40px)' : dir === 'right' ? 'translateX(40px)' : 'translateY(28px)';
-      }
-      observer.observe(el);
-    });
-    this._revealObserver = observer;
-  }
-
-  // ── PARALLAX ───────────────────────────────────────────────────────
-  _initParallax() {
-    const dotGrid = document.getElementById('hero-dotgrid');
-    const accent = document.getElementById('hero-accent');
-    const projBg1 = document.getElementById('proj-bg-1');
-    const projBg2 = document.getElementById('proj-bg-2');
-
-    let ticking = false;
-    this._scrollHandler = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const sy = window.scrollY;
-          if (dotGrid) dotGrid.style.transform = `translateY(${sy * 0.25}px)`;
-          if (accent) accent.style.transform = `translateY(${sy * 0.08}px)`;
-          if (projBg1) {
-            const rect = projBg1.closest('section').getBoundingClientRect();
-            const offset = -rect.top * 0.15;
-            projBg1.style.transform = `translateY(${offset}px) rotate(${offset * 0.05}deg)`;
-          }
-          if (projBg2) {
-            const rect = projBg2.closest('section').getBoundingClientRect();
-            const offset = -rect.top * 0.12;
-            projBg2.style.transform = `translateY(${offset}px)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', this._scrollHandler, { passive: true });
-  }
-
-  // ── ANIMATED COUNTERS ──────────────────────────────────────────────
-  _initCounters() {
-    const counters = [
-      { id: 'stat-projects', target: 5, suffix: '+' },
-      { id: 'stat-startups', target: 2, suffix: '' },
-      { id: 'stat-tech',     target: 18, suffix: '+' },
-    ];
-
-    const animCounter = (el, target, suffix, duration) => {
-      let start = null;
-      const step = (ts) => {
+  /* ── Nombre: scramble único al cargar ── */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var chars = 'ABCDEFGHIJKLNOPRSTUVXYZ';
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { document.querySelectorAll('.hero__name > span').forEach(function (el, idx) {
+      var final = el.textContent, start = null, dur = 900 + idx * 300;
+      el.style.minWidth = el.offsetWidth + 'px';
+      function frame(ts) {
         if (!start) start = ts;
-        const progress = Math.min((ts - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target) + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const conf = counters.find(c => c.id === e.target.id);
-        if (conf) animCounter(e.target, conf.target, conf.suffix, 1800);
-        observer.unobserve(e.target);
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-  }
-
-  // ── TEXT SCRAMBLE ─────────────────────────────────────────────────
-  _initTextScramble() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#@!$%&';
-    const scramble = (el, final, duration) => {
-      let start = null;
-      const frame = (ts) => {
-        if (!start) start = ts;
-        const p = Math.min((ts - start) / duration, 1);
-        const revealed = Math.floor(p * final.length);
-        let out = '';
-        for (let i = 0; i < final.length; i++) {
-          if (final[i] === ' ') { out += ' '; continue; }
-          if (i < revealed) { out += final[i]; }
-          else { out += chars[Math.floor(Math.random() * chars.length)]; }
-        }
+        var p = Math.min((ts - start) / dur, 1), shown = Math.floor(p * final.length), out = '';
+        for (var i = 0; i < final.length; i++) out += i < shown ? final[i] : chars[(Math.random() * chars.length) | 0];
         el.textContent = out;
-        if (p < 1) requestAnimationFrame(frame);
-        else el.textContent = final;
-      };
-      requestAnimationFrame(frame);
-    };
-
-    const n1 = document.getElementById('hero-name-1');
-    const n2 = document.getElementById('hero-name-2');
-    if (n1) setTimeout(() => scramble(n1, 'MARCOS', 1200), 300);
-    if (n2) setTimeout(() => scramble(n2, 'BENTIVEGNA', 1600), 500);
-  }
-
-  // ── 3D CARD TILT ──────────────────────────────────────────────────
-  _initCardTilt() {
-    if (!window.matchMedia('(pointer: fine)').matches) return;
-    document.querySelectorAll('.tilt-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const rx = y * -10;
-        const ry = x * 10;
-        const sx = 6 + ry * 0.5;
-        const sy = 6 - rx * 0.5;
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.025)`;
-        card.style.boxShadow = `${sx}px ${sy}px 0 #0f0f0f`;
-        card.style.transition = 'transform 0.06s ease-out, box-shadow 0.06s ease-out';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
-        card.style.boxShadow = '6px 6px 0 #0f0f0f';
-        card.style.transition = 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.5s';
-      });
-    });
-  }
-
-  // ── CARD IMAGE ZOOM ON HOVER ───────────────────────────────────────
-  _initCardImgZoom() {
-    document.querySelectorAll('.tilt-card').forEach(card => {
-      const img = card.querySelector('.card-img');
-      if (!img) return;
-      card.addEventListener('mouseenter', () => { img.style.transform = 'scale(1.06)'; });
-      card.addEventListener('mouseleave', () => { img.style.transform = 'scale(1)'; });
-    });
-  }
-
-  // ── MAGNETIC BUTTONS ──────────────────────────────────────────────
-  _initMagneticBtns() {
-    document.querySelectorAll('.mag-btn').forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
-        const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
-        btn.style.transform = `translate(${x}px, ${y}px)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0,0)';
-        btn.style.transition = 'transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94)';
-      });
-    });
-  }
-
-  // ── SEAMLESS MARQUEES ─────────────────────────────────────────────
-  _initMarquees() {
-    const setup = () => {
-      document.querySelectorAll('.marquee-track').forEach((track, i) => {
-        const inner = track.querySelector('.marquee-inner');
-        const original = track.querySelector('.marquee-content');
-        if (!inner || !original) return;
-
-        const speed = parseFloat(track.dataset.speed || '20');
-        const direction = track.dataset.direction || 'normal';
-
-        // Remove any previously cloned nodes (hot-reload safety)
-        inner.querySelectorAll('.marquee-clone').forEach(n => n.remove());
-
-        // Clone until content is at least 3× viewport wide
-        const needed = window.innerWidth * 3;
-        let total = original.offsetWidth;
-        while (total < needed) {
-          const clone = original.cloneNode(true);
-          clone.classList.add('marquee-clone');
-          inner.appendChild(clone);
-          total += original.offsetWidth;
-        }
-
-        // One item width = the scroll distance for a perfect loop
-        const itemW = original.offsetWidth;
-
-        const kfName = `mq${i}`;
-        // Remove old style if exists
-        const oldStyle = document.getElementById(kfName);
-        if (oldStyle) oldStyle.remove();
-
-        const styleEl = document.createElement('style');
-        styleEl.id = kfName;
-        styleEl.textContent = `
-          @keyframes ${kfName} {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-${itemW}px); }
-          }
-        `;
-        document.head.appendChild(styleEl);
-
-        inner.style.animation = `${kfName} ${speed}s linear infinite ${direction}`;
-      });
-    };
-
-    // Run after fonts are ready for accurate measurements
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(setup);
-    } else {
-      setTimeout(setup, 400);
-    }
-  }
-
-  _initToggleProjects() {
-    const container = document.getElementById('hidden-projects');
-    const btn = document.getElementById('btn-ver-todos');
-    if (!container || !btn) return;
-    btn.addEventListener('click', () => {
-      const isHidden = container.style.display === 'none' || container.style.display === '';
-      if (isHidden) {
-        container.style.display = 'block';
-        btn.textContent = __i18n[__currentLang]['btn.ocultar'];
-        container.querySelectorAll('[data-reveal]').forEach(el => {
-          const delay = parseFloat(el.dataset.delay || '0');
-          el.style.transition = `opacity 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1), transform 0.7s ${delay}s cubic-bezier(0.22,1,0.36,1)`;
-          el.style.opacity = '1';
-          el.style.transform = 'translateX(0) translateY(0)';
-        });
-      } else {
-        container.style.display = 'none';
-        btn.textContent = __i18n[__currentLang]['btn.ver-todos'];
+        if (p < 1) requestAnimationFrame(frame); else el.textContent = final;
       }
-    });
+      setTimeout(function () { requestAnimationFrame(frame); }, 150 + idx * 150);
+    }); });
   }
 
-  _initLangToggle() {
-    const es = document.getElementById('lang-toggle-es');
-    const en = document.getElementById('lang-toggle-en');
-    if (!es || !en) return;
-    es.addEventListener('click', () => __applyLang('en'));
-    en.addEventListener('click', () => __applyLang('es'));
-  }
-
-  _initDarkToggle() {
-    const btn = document.getElementById('dark-toggle');
-    const overlay = document.getElementById('theme-overlay');
-    if (!btn) return;
-    const knob = btn.querySelector('.dt-knob');
-    if (localStorage.getItem('dark') === '1') {
-      document.documentElement.classList.add('dark-mode');
-      if (knob) knob.style.transform = 'translateX(22px)';
-    }
-    btn.addEventListener('click', () => {
-      if (overlay) {
-        overlay.style.transition = 'transform 0.35s cubic-bezier(0.22,1,0.36,1)';
-        overlay.style.transform = 'scaleY(1)';
-        setTimeout(() => {
-          const html = document.documentElement;
-          const isDark = html.classList.toggle('dark-mode');
-          localStorage.setItem('dark', isDark ? '1' : '0');
-          if (knob) knob.style.transform = isDark ? 'translateX(22px)' : 'translateX(0)';
-          overlay.style.transition = 'transform 0.4s cubic-bezier(0.22,1,0.36,1)';
-          overlay.style.transform = 'scaleY(0)';
-        }, 380);
-      } else {
-        const html = document.documentElement;
-        const isDark = html.classList.toggle('dark-mode');
-        localStorage.setItem('dark', isDark ? '1' : '0');
-        if (knob) knob.style.transform = isDark ? 'translateX(22px)' : 'translateX(0)';
-      }
-    });
-  }
-
-  renderVals() { return {}; }
-}
-
-const __i18n = {
-  es: {
-    'nav.experiencia': 'Experiencia', 'nav.proyectos': 'Proyectos', 'nav.skills': 'Stack', 'nav.contacto': 'Contacto',
-    'hero.badge': 'Full Stack Developer', 'hero.role': 'Fundador · Owtli',
-    'hero.bio': 'Fundador de <strong style="color:#fff">Owtli</strong> y Full Stack Developer especializado en automatización empresarial con IA. Construyo productos que unifican datos, automatizan procesos y escalan negocios con LLMs locales, n8n y flujos multicanal. Ingeniería Informática en la Universidad de Alicante.',
-    'hero.btn.projects': 'Ver proyectos →', 'hero.btn.cv': 'Descargar CV ↓', 'hero.btn.contact': 'Contactar',
-    'stat.projects': 'Proyectos', 'stat.startups': 'Startups', 'stat.tech': 'Tecnologías',
-    'exp.section': '01 / Trayectoria', 'exp.title': 'Experiencia',
-    'proj.section': '02 / Portfolio', 'proj.title': 'Proyectos',
-    'proj.owtli.desc': 'SaaS de automatización empresarial con motor n8n dedicado por cliente. Asistente de IA que genera, modifica y diagnostica flujos en lenguaje natural. +37 plantillas predeterminadas, canales de voz y WhatsApp, dashboards de ROI y facturación integrada.',
-    'proj.setter.desc': 'Setter de IA para Instagram y WhatsApp. Responde DMs al instante, califica leads y agenda reuniones 24/7. Ciclo de ventas completo desde el primer contacto hasta el cierre.',
-    'proj.tauri.desc': 'Template de aplicación de escritorio que integra <strong>Tauri (Rust)</strong> con <strong>n8n</strong> para automatización local de flujos de trabajo. Configura tu cuenta de n8n, añade tu API key y tienes un entorno completo para construir automatizaciones que se reflejan en el frontend React.',
-    'proj.enecc.desc': 'Landing page para inmobiliaria de Dubai con integración API de Airbnb para sincronización automática de propiedades, gestión de disponibilidad y reservas centralizadas.',
-    'proj.khrono.desc': 'SaaS con IA que convierte DMs de WhatsApp e Instagram en reservas reales. Confirmaciones automáticas, recordatorios y gestión de no-shows para negocios locales.',
-    'proj.btn.view': 'Ver proyecto →',
-    'skills.section': '03 / Stack', 'skills.title': 'Habilidades',
-    'skills.ia': 'IA & Automatización', 'skills.langs': 'Lenguajes', 'skills.frameworks': 'Frameworks',
-    'skills.devops': 'DevOps & Cloud', 'skills.baas': 'BaaS / Bases de Datos', 'skills.deploy': 'Deploy / OS',
-    'skills.methods': 'Metodologías y entornos:',
-    'contact.section': '05 / Contacto', 'contact.title': '¿Hablamos?',
-    'contact.desc': 'Abierto a nuevas oportunidades, proyectos freelance y colaboraciones. Si tienes un problema de automatización o quieres explorar IA en tu empresa, escríbeme.',
-    'contact.btn': 'Enviar mensaje →',
-    'certs.section': '04 / Certificaciones', 'certs.title': 'Formación',
-    'certs.swe.school': 'Especialización en Ingeniería del Software',
-    'certs.swe.desc': 'Especialización cursada dentro del Grado en Ingeniería Informática. Asignaturas avanzadas en arquitectura de software, diseño de sistemas distribuidos, metodologías ágiles, calidad del software e ingeniería de requisitos.',
-    'footer.copyright': '© 2026 Marcos Bentivegna. Todos los derechos reservados.',
-    'btn.ver-todos': 'Ver todos los proyectos ↓', 'btn.ocultar': 'Ocultar proyectos ↑',
-    'exp.owtli.role': 'Fundador & Full Stack Developer',
-    'exp.owtli.badge1': 'Startup propia', 'exp.owtli.badge2': 'IA · Automatización',
-    'exp.owtli.p1': 'Fund\u00e9 <strong>Owtli</strong> tras adquirir Mimetria \u2014la anterior startup de la que fui cofundador\u2014 d\u00e1ndole un nuevo enfoque: servicios de <strong>LLMs e IAs en entornos locales</strong> para medianas y grandes empresas que necesitan privacidad de datos.',
-    'exp.owtli.p2': 'Desarrollo <strong>software de automatizaci\u00f3n de procesos</strong> y unificaci\u00f3n de datos en entornos de IA, eliminando silos de informaci\u00f3n y flujos de trabajo manuales en empresas con operaciones complejas.',
-    'exp.owtli.p3': 'Responsable de toda la arquitectura t\u00e9cnica, el desarrollo de producto y la relaci\u00f3n con clientes, compaginando el proyecto con los estudios de Ingenier\u00eda Inform\u00e1tica.',
-    'exp.mimetria.role': 'Co-fundador · Full Stack',
-    'exp.mimetria.p1': 'Cofund\u00e9 Mimetria con dos socios, con el objetivo de <strong>unificar CRMs, bases de datos y herramientas corporativas</strong> para medianas y grandes empresas. Mantuvimos reuniones con potenciales clientes, presentamos propuestas de servicios y gestionamos despliegues de <strong>Google Workspace</strong> y <strong>Google Cloud Admin Console</strong>.',
-    'exp.mimetria.p2': 'Desarroll\u00e9 <strong>EneccDubai</strong>, nuestro primer cliente real: una plataforma inmobiliaria para Dubai con integraci\u00f3n de la API de Airbnb para gesti\u00f3n automatizada de propiedades y reservas.',
-    'exp.mimetria.p3': 'En febrero de 2026, al decidir los socios no continuar, <strong>adquir\u00ed el proyecto \u00edntegramente</strong> y lo reorient\u00e9 hacia IA y automatizaci\u00f3n, relanz\u00e1ndolo como <strong>Owtli</strong>.',
-    'exp.khrono.role': 'Proyecto Personal',
-    'exp.khrono.p1': 'Plataforma SaaS con <strong>Inteligencia Artificial</strong> para convertir DMs de WhatsApp e Instagram en reservas reales. Automatiza la gesti\u00f3n de citas para negocios locales mediante integraci\u00f3n con <strong>WhatsApp Business API</strong> usando Baileys, con confirmaciones autom\u00e1ticas y recordatorios.',
-    'exp.edu.degree': 'Ingeniería Informática',
-    'exp.edu.spec': 'Especialización en Ing. del Software',
-    'exp.edu.p1': 'Ejerc\u00ed roles de <strong>liderazgo</strong> en proyectos de software acad\u00e9micos, implementando metodolog\u00edas <strong>SCRUM</strong> y coordinando equipos de desarrollo para maximizar la calidad y eficiencia de los entregables.',
-  },
-  en: {
-    'nav.experiencia': 'Experience', 'nav.proyectos': 'Projects', 'nav.skills': 'Stack', 'nav.contacto': 'Contact',
-    'hero.badge': 'Full Stack Developer', 'hero.role': 'Founder · Owtli',
-    'hero.bio': 'Founder of <strong style="color:#fff">Owtli</strong> and Full Stack Developer specialized in AI-powered business automation. I build products that unify data, automate processes, and scale businesses with local LLMs, n8n, and multichannel workflows. Computer Engineering at University of Alicante.',
-    'hero.btn.projects': 'View projects →', 'hero.btn.cv': 'Download CV ↓', 'hero.btn.contact': 'Contact me',
-    'stat.projects': 'Projects', 'stat.startups': 'Startups', 'stat.tech': 'Technologies',
-    'exp.section': '01 / Journey', 'exp.title': 'Experience',
-    'proj.section': '02 / Portfolio', 'proj.title': 'Projects',
-    'proj.owtli.desc': 'Enterprise automation SaaS with a dedicated n8n engine per client. AI assistant that generates, modifies and diagnoses workflows in natural language. +37 pre-built templates, voice and WhatsApp channels, ROI dashboards and integrated billing.',
-    'proj.setter.desc': 'AI setter for Instagram and WhatsApp. Responds to DMs instantly, qualifies leads and schedules meetings 24/7. Complete sales cycle from first contact to close.',
-    'proj.tauri.desc': 'Desktop app template integrating <strong>Tauri (Rust)</strong> with <strong>n8n</strong> for local workflow automation. Configure your n8n account, add your API key and get a complete environment for building automations reflected in the React frontend.',
-    'proj.enecc.desc': 'Landing page for a Dubai real estate agency with Airbnb API integration for automatic property synchronization, availability management and centralized bookings.',
-    'proj.khrono.desc': 'AI-powered SaaS that converts WhatsApp and Instagram DMs into real bookings. Automatic confirmations, reminders and no-show management for local businesses.',
-    'proj.btn.view': 'View project →',
-    'skills.section': '03 / Stack', 'skills.title': 'Skills',
-    'skills.ia': 'AI & Automation', 'skills.langs': 'Languages', 'skills.frameworks': 'Frameworks',
-    'skills.devops': 'DevOps & Cloud', 'skills.baas': 'BaaS / Databases', 'skills.deploy': 'Deploy / OS',
-    'skills.methods': 'Methodologies & tools:',
-    'contact.section': '05 / Contact', 'contact.title': 'Let\'s talk?',
-    'contact.desc': 'Open to new opportunities, freelance projects and collaborations. If you have an automation problem or want to explore AI in your company, write to me.',
-    'contact.btn': 'Send message →',
-    'certs.section': '04 / Certifications', 'certs.title': 'Education',
-    'certs.swe.school': 'Software Engineering Specialization',
-    'certs.swe.desc': 'Specialization completed within the Computer Engineering degree. Advanced coursework in software architecture, distributed systems design, agile methodologies, software quality and requirements engineering.',
-    'footer.copyright': '© 2026 Marcos Bentivegna. All rights reserved.',
-    'btn.ver-todos': 'View all projects ↓', 'btn.ocultar': 'Hide projects ↑',
-    'exp.owtli.role': 'Founder & Full Stack Developer',
-    'exp.owtli.badge1': 'Own Startup', 'exp.owtli.badge2': 'AI · Automation',
-    'exp.owtli.p1': 'I founded <strong>Owtli</strong> after acquiring Mimetria \u2014the previous startup I co-founded\u2014 giving it a new focus: <strong>local LLM and AI services</strong> for medium and large companies that need data privacy.',
-    'exp.owtli.p2': 'I develop <strong>process automation software</strong> and data unification in AI environments, eliminating information silos and manual workflows in companies with complex operations.',
-    'exp.owtli.p3': 'Responsible for all technical architecture, product development and client relations, balancing the project with Computer Engineering studies.',
-    'exp.mimetria.role': 'Co-founder · Full Stack',
-    'exp.mimetria.p1': 'I co-founded Mimetria with two partners to <strong>unify CRMs, databases and corporate tools</strong> for medium and large companies. We held meetings with potential clients, presented service proposals and managed <strong>Google Workspace</strong> and <strong>Google Cloud Admin Console</strong> deployments.',
-    'exp.mimetria.p2': 'I built <strong>EneccDubai</strong>, our first real client: a real estate platform for Dubai with Airbnb API integration for automated property and booking management.',
-    'exp.mimetria.p3': 'In February 2026, when my partners decided not to continue, <strong>I acquired the project entirely</strong> and pivoted toward AI and automation, relaunching it as <strong>Owtli</strong>.',
-    'exp.khrono.role': 'Personal Project',
-    'exp.khrono.p1': 'AI-powered SaaS platform that converts WhatsApp and Instagram DMs into real bookings. Automates appointment management for local businesses through <strong>WhatsApp Business API</strong> integration using Baileys, with automatic confirmations and reminders.',
-    'exp.edu.degree': 'Computer Engineering',
-    'exp.edu.spec': 'Software Engineering Specialization',
-    'exp.edu.p1': 'I exercised <strong>leadership</strong> roles in academic software projects, implementing <strong>SCRUM</strong> methodologies and coordinating development teams to maximize the quality and efficiency of deliverables.',
-  }
-};
-let __currentLang = localStorage.getItem('lang') || 'es';
-window.__applyLang = __applyLang;
-
-function __applyLang(lang) {
-  __currentLang = lang;
-  localStorage.setItem('lang', lang);
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    const text = __i18n[lang] && __i18n[lang][key];
-    if (!text) return;
-    if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) {
-      el.childNodes[0].nodeValue = text;
-    } else if (el.dataset.i18nHtml) {
-      el.innerHTML = text;
-    } else {
-      el.textContent = text;
-    }
+  /* ── Copiar email ── */
+  var copyBtn = document.getElementById('copy-btn');
+  copyBtn.addEventListener('click', function () {
+    var label = copyBtn.querySelector('span');
+    var done = function () {
+      copyBtn.classList.add('is-done');
+      label.innerHTML = t('copied');
+      copyBtn.querySelector('use').setAttribute('href', '#i-check');
+      setTimeout(function () {
+        copyBtn.classList.remove('is-done');
+        label.innerHTML = t('copy');
+        copyBtn.querySelector('use').setAttribute('href', '#i-copy');
+      }, 1800);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(copyBtn.dataset.copy).then(done, function () { location.href = 'mailto:' + copyBtn.dataset.copy; });
+    else location.href = 'mailto:' + copyBtn.dataset.copy;
   });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.dataset.i18nPlaceholder;
-    const text = __i18n[lang] && __i18n[lang][key];
-    if (text) el.placeholder = text;
-  });
-  const esBtn = document.getElementById('lang-toggle-es');
-  const enBtn = document.getElementById('lang-toggle-en');
-  if (esBtn) esBtn.style.display = lang === 'es' ? 'none' : 'inline-flex';
-  if (enBtn) enBtn.style.display = lang === 'en' ? 'none' : 'inline-flex';
-}
-window.addEventListener('click', function(e) {
-  if (e.target.id === 'lang-toggle-es') { e.stopPropagation(); e.stopImmediatePropagation(); __applyLang('es'); }
-  else if (e.target.id === 'lang-toggle-en') { e.stopPropagation(); e.stopImmediatePropagation(); __applyLang('en'); }
-}, true);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
 </script>
-<div id="theme-overlay" style="position:fixed;inset:0;z-index:99999;background:#e86a0a;transform:scaleY(0);pointer-events:none;transform-origin:center;will-change:transform"></div>
 </body>
 </html>
