@@ -356,7 +356,8 @@
   .proj__stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
   .proj { position: relative; }
   .proj .link { position: relative; z-index: 2; }
-  .proj--oss .proj__media { display: grid; place-items: center; background: #15141a; color: #f6f2ea; }
+  .proj--oss { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+  .proj--oss .proj__media { display: grid; place-items: center; background: #15141a; color: #f6f2ea; aspect-ratio: auto; border-bottom: 0; border-right: var(--bw) solid #15141a; }
   .oss { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 24px; }
   .oss svg { width: 56px; height: 56px; }
   .oss b { font-family: var(--f-display); font-size: 22px; letter-spacing: -0.01em; }
@@ -381,30 +382,12 @@
   .proj__main, .proj__side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
   .proj--impulsa .proj__foot { margin-top: 0; }
   .proj__note { font-family: var(--f-mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: rgba(246,242,234,.6); }
-  .status__dot--wip { background: var(--orange); animation: none; }
-  .proj--axis { background: #15141a; box-shadow: 8px 8px 0 #0a1430; }
-  .proj--axis:hover { box-shadow: 9px 9px 0 var(--orange); }
-  .proj--axis .proj__media { background: #f4f7fb; }
-  .proj--axis .proj__media img { object-position: center top; }
-  .proj--axis .tags li { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.28); color: #f6f2ea; }
-  .proj--axis p { color: rgba(246,242,234,.76); font-size: 17px; }
-  .axis {
     display: grid; place-items: center; padding: 20px; border: 2px solid rgba(246,242,234,.22);
     background:
       linear-gradient(rgba(246,242,234,.05) 1px, transparent 1px) 0 0 / 24px 24px,
       linear-gradient(90deg, rgba(246,242,234,.05) 1px, transparent 1px) 0 0 / 24px 24px,
       var(--blue);
   }
-  .axis__stack { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .axis__mod { display: grid; gap: 2px; padding: 14px 16px; background: #fffdf8; color: #15141a; border: var(--bw) solid #15141a; box-shadow: 4px 4px 0 #15141a; font-family: var(--f-body); font-weight: 700; font-size: clamp(15px, 4vw, 18px); letter-spacing: -.01em; min-width: 0; transition: transform .3s var(--ease-out); }
-  .axis__mod small { font-family: var(--f-mono); font-weight: 700; font-size: 11px; letter-spacing: .04em; color: #5c5963; }
-  .axis__mod--core { grid-column: 1 / -1; background: var(--orange); }
-  .axis__mod--core small { color: #3a1f06; }
-  .axis__mod--imp { background: #ffb020; }
-  .axis__mod--imp small { color: #4a3300; }
-  .proj--axis:hover .axis__mod:nth-child(2) { transform: translateY(-3px); }
-  .proj--axis:hover .axis__mod:nth-child(3) { transform: translateY(-5px); }
-  .axis__base { grid-column: 1 / -1; margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border: var(--bw) dashed rgba(246,242,234,.55); color: #f6f2ea; font-family: var(--f-mono); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; }
 
   /* ── Stack (ficha técnica) ── */
   .spec { border: var(--bw) solid var(--line); background: var(--card); box-shadow: 6px 6px 0 var(--shadow); }
@@ -499,7 +482,6 @@
     .proj--feature { grid-template-columns: minmax(0, 1fr); }
     .proj--feature .proj__media { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: var(--bw) solid #15141a; }
     .contact { grid-template-columns: 1fr; }
-    .proj--axis { grid-template-columns: minmax(0, 1fr); }
     .proj--impulsa .proj__body { grid-template-columns: minmax(0, 1fr); }
     .proj--impulsa .proj__media { aspect-ratio: 16 / 10; }
   }
@@ -512,6 +494,8 @@
     .tl__when .now { margin-top: 0; }
     .bento { grid-template-columns: 1fr; gap: 20px; }
     .proj--half { grid-column: auto; }
+    .proj--oss { grid-template-columns: minmax(0, 1fr); }
+    .proj--oss .proj__media { aspect-ratio: 16 / 9; border-right: 0; border-bottom: var(--bw) solid #15141a; }
     .spec__row { grid-template-columns: 1fr; gap: 12px; }
     .spec__row h3 { padding-top: 0; }
   }
@@ -524,12 +508,8 @@
     .card, .spec { box-shadow: 4px 4px 0 var(--shadow); }
     .tl--feature .tl__card { box-shadow: 5px 5px 0 var(--orange); }
     .proj--feature { box-shadow: 5px 5px 0 var(--orange); }
-    .proj--axis { box-shadow: 5px 5px 0 #0a1430; }
     .proj__facts dd { font-size: 14px; white-space: normal; }
     .proj__facts > div { padding: 8px 10px; }
-    .axis__mod { padding: 12px; box-shadow: 3px 3px 0 #15141a; }
-    .axis__mod small { font-size: 10px; letter-spacing: 0; }
-    .axis__base { font-size: 11px; letter-spacing: .05em; }
     .proj:hover { transform: none; }
     .sticker { left: -10px; font-size: 12px; }
     .portrait { max-width: 250px; }
@@ -554,7 +534,6 @@
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h4l1.6 4.4-2.3 1.5a11 11 0 0 0 6.3 6.3l1.5-2.3 4.4 1.6v4a1.5 1.5 0 0 1-1.6 1.5C10.6 19.9 4.1 13.4 3.5 5.1A1.5 1.5 0 0 1 5 3.5Z"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
-    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
     <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.31 3.44 9.8 8.2 11.39.6.11.83-.26.83-.58l-.02-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22l-.01 3.29c0 .32.21.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></symbol>
@@ -611,7 +590,7 @@
         <span class="chip chip--line" data-i18n="hero.chip3">Ingeniero informático</span>
       </div>
 
-      <p class="hero__bio" data-i18n="hero.bio" data-html>Fundador de <strong>Owtli</strong>. Construyo <strong>Owtli Impulsa</strong>, un SaaS donde las empresas crean automatizaciones hablando con una IA, <strong>Owtli Acta</strong>, el diagnóstico y plan para cumplir la Ley de IA europea, y <strong>Owtli Axis</strong>, el ecosistema de IA para empresas: chat, conocimiento y automatizaciones en un solo sitio.</p>
+      <p class="hero__bio" data-i18n="hero.bio" data-html>Fundador de <strong>Owtli</strong>. Construyo <strong>Owtli Impulsa</strong>, un SaaS donde las empresas crean automatizaciones hablando con una IA, y <strong>Owtli Acta</strong>, el diagnóstico y plan para cumplir la Ley de IA europea.</p>
 
       <div class="hero__ctas">
         <a class="btn" href="#proyectos"><span data-i18n="hero.cta1">Ver proyectos</span><svg class="icon icon--nudge"><use href="#i-arrow"/></svg></a>
@@ -668,7 +647,6 @@
             <li data-i18n="exp.owtli.p1" data-html>Fundé <strong>Owtli</strong> tras adquirir íntegramente Mimetria y reorientarla hacia soluciones de <strong>IA para empresas</strong>, con la privacidad de sus datos como prioridad.</li>
             <li data-i18n="exp.owtli.p2" data-html>Lancé <strong>Owtli Impulsa</strong> (en producción, v3.32): automatizaciones que se crean conversando y corren sobre <strong>Owtli Runner</strong>, un motor propio que diseñé para sustituir a n8n.</li>
             <li data-i18n="exp.owtli.p5" data-html>Construí <strong>Owtli Acta</strong> (en producción), el producto de entrada para la Ley de IA europea: un diagnóstico gratuito y un plan de pago con inventario, política de uso, formación y dossier de evidencias.</li>
-            <li data-i18n="exp.owtli.p4" data-html>Desarrollo con el equipo <strong>Owtli Axis</strong>, el ecosistema de IA de la empresa: chat con los modelos, base de conocimiento, consultas en lenguaje natural a la base de datos y las automatizaciones de Impulsa.</li>
             <li data-i18n="exp.owtli.p3" data-html>Responsable de la <strong>arquitectura técnica</strong>, el producto y la relación con clientes, compaginándolo con Ingeniería Informática.</li>
           </ul>
         </article>
@@ -699,11 +677,11 @@
             <div class="mark mark--orange" aria-hidden="true">K</div>
             <div class="tl__title">
               <h3>Khronodesk</h3>
-              <p class="tl__role" data-i18n="exp.khr.role">Proyecto personal</p>
+              <p class="tl__role" data-i18n="exp.khr.role">Proyecto personal · cerrado</p>
             </div>
           </div>
           <ul class="tl__list">
-            <li data-i18n="exp.khr.p1" data-html>SaaS con <strong>IA</strong> que convierte DMs de WhatsApp e Instagram en reservas reales. Automatiza citas para negocios locales mediante <strong>WhatsApp Business API</strong> (Baileys), con confirmaciones y recordatorios automáticos.</li>
+            <li data-i18n="exp.khr.p1" data-html>SaaS con <strong>IA</strong> que convertía DMs de WhatsApp e Instagram en reservas para negocios locales, mediante <strong>WhatsApp Business API</strong> (Baileys), con confirmaciones y recordatorios automáticos.</li>
           </ul>
         </article>
       </li>
@@ -767,39 +745,6 @@
         </div>
       </article>
 
-      <article class="card proj proj--feature proj--impulsa proj--axis" data-reveal>
-        <div class="proj__media"><img src="uploads/opt/axis.jpg" alt="Pantalla de inicio de Owtli Axis con el chat de IA" width="1600" height="800" loading="lazy"></div>
-        <div class="proj__body">
-          <div class="proj__main">
-            <div class="proj__head">
-              <h3>Owtli Axis</h3>
-              <span class="chip chip--tint"><span class="status__dot status__dot--wip" aria-hidden="true"></span><span data-i18n="tag.wip">En desarrollo</span></span>
-            </div>
-            <p data-i18n="proj.axis" data-html>El <strong>ecosistema de IA para empresas</strong>: reúne el chat con los modelos, la base de conocimiento, las consultas en lenguaje natural a su base de datos y las automatizaciones de Impulsa en un solo sitio. Funciona con las API de los modelos que ya usan y, si lo necesitan, también con <strong>LLMs en local</strong>.</p>
-            <ul class="proj__points">
-              <li data-i18n="proj.axis.p1" data-html><strong>DataCopilot</strong>: preguntas en lenguaje natural a la base de datos interna, con permisos por rol y anonimización.</li>
-              <li data-i18n="proj.axis.p2" data-html>Módulos con <strong>licencia offline</strong> firmada (Ed25519), sin depender de un servidor de licencias.</li>
-              <li data-i18n="proj.axis.p3" data-html>Impulsa embebido con acceso de un solo uso. Ahora: migración del frontend a React, en equipo.</li>
-            </ul>
-          </div>
-          <div class="proj__side">
-            <div class="axis" aria-label="Módulos de Owtli Axis">
-              <div class="axis__stack">
-                <span class="axis__mod axis__mod--core">Core AI<small data-i18n="axis.core">chat · conocimiento</small></span>
-                <span class="axis__mod">DataCopilot<small>NL → SQL</small></span>
-                <span class="axis__mod axis__mod--imp">Impulsa<small data-i18n="axis.auto">automatizaciones</small></span>
-                <span class="axis__mod">WhatsApp<small data-i18n="axis.mod">módulo</small></span>
-                <span class="axis__mod">Owtli Agent<small data-i18n="axis.tel">telemetría</small></span>
-                <span class="axis__base"><svg class="icon"><use href="#i-server"/></svg><span data-i18n="axis.base">Nube o servidor propio</span></span>
-              </div>
-            </div>
-            <div class="proj__foot">
-              <ul class="tags"><li>Python</li><li>FastAPI</li><li>React</li><li>TypeScript</li><li>PostgreSQL</li><li>Docker</li></ul>
-              <span class="proj__note" data-i18n="proj.axis.note">Basada en Open WebUI</span>
-            </div>
-          </div>
-        </div>
-      </article>
 
       <article class="card proj proj--half" data-reveal>
         <div class="proj__media"><img src="uploads/opt/acta.jpg" alt="Portada de Owtli Acta: «Tu equipo ya usa IA. ¿Está en regla?»" width="1600" height="900" loading="lazy"></div>
@@ -849,17 +794,6 @@
         </div>
       </article>
 
-      <article class="card proj proj--half" data-reveal>
-        <div class="proj__media"><img src="uploads/opt/khronodesk.jpg" alt="Web de Khronodesk" width="1400" height="769" loading="lazy"></div>
-        <div class="proj__body">
-          <div class="proj__head"><h3>Khronodesk</h3><span class="chip chip--tint" data-i18n="tag.personal">Personal</span></div>
-          <p data-i18n="proj.khrono">SaaS con IA que convierte DMs de WhatsApp e Instagram en reservas. Confirmaciones automáticas, recordatorios y control de no-shows para negocios locales.</p>
-          <div class="proj__foot">
-            <ul class="tags"><li>IA</li><li>WhatsApp API</li><li>Baileys</li></ul>
-            <a class="link proj__stretch" href="https://www.khronodesk.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
-          </div>
-        </div>
-      </article>
 
       <article class="card proj proj--half proj--oss" data-reveal style="--d:.08s">
         <div class="proj__media">
@@ -1001,7 +935,7 @@
     'nav.exp': 'Experience', 'nav.proj': 'Projects', 'nav.stack': 'Stack', 'nav.contact': 'Contact',
     'hero.status': 'Open to projects and collaborations',
     'hero.chip2': 'AI & automation', 'hero.chip3': 'Software engineer',
-    'hero.bio': 'Founder of <strong>Owtli</strong>. I build <strong>Owtli Impulsa</strong>, a SaaS where companies create automations by talking to an AI; <strong>Owtli Acta</strong>, the diagnostic and plan to comply with the EU AI Act; and <strong>Owtli Axis</strong>, the AI ecosystem for companies: chat, knowledge and automations in one place.',
+    'hero.bio': 'Founder of <strong>Owtli</strong>. I build <strong>Owtli Impulsa</strong>, a SaaS where companies create automations by talking to an AI, and <strong>Owtli Acta</strong>, the diagnostic and plan to comply with the EU AI Act.',
     'hero.cta1': 'View projects', 'hero.cta2': 'Download CV', 'hero.cta3': 'Get in touch',
     'hero.sticker': 'Founder · Owtli',
     'fact.now': 'Now', 'fact.now.v': 'Building Owtli', 'fact.base': 'Based in', 'fact.edu': 'Education', 'fact.edu.v': 'Computer Eng. · UA',
@@ -1014,15 +948,14 @@
     'exp.owtli.p1': 'I founded <strong>Owtli</strong> after fully acquiring Mimetria and refocusing it on <strong>AI solutions for companies</strong>, with data privacy as a priority.',
     'exp.owtli.p2': 'I launched <strong>Owtli Impulsa</strong> (in production, v3.32): automations created through conversation, running on <strong>Owtli Runner</strong>, an in-house engine I designed to replace n8n.',
     'exp.owtli.p5': 'I built <strong>Owtli Acta</strong> (in production), the entry product for the EU AI Act: a free diagnostic and a paid plan with inventory, usage policy, training and an evidence dossier.',
-    'exp.owtli.p4': 'I build <strong>Owtli Axis</strong> with the team, the company’s AI ecosystem: chat with the models, knowledge base, natural-language queries over the database and Impulsa automations.',
     'exp.owtli.p3': 'I own the <strong>technical architecture</strong>, the product and client relations, while finishing my Computer Engineering degree.',
     'exp.mim.evo': '→ became Owtli',
     'exp.mim.role': 'Co-founder & full stack developer · Alicante',
     'exp.mim.p1': 'I co-founded Mimetria with two partners to <strong>unify CRMs, databases and corporate tools</strong> for mid-size and large companies, with <strong>Google Workspace</strong> and <strong>Google Cloud Admin Console</strong> deployments.',
     'exp.mim.p2': 'I built <strong>EneccDubai</strong>, our first real client, plus the company landing with an admin panel for projects and an SEO-focused blog.',
     'exp.mim.p3': 'In February 2026, when my partners decided not to continue, <strong>I acquired the project</strong> and relaunched it as Owtli.',
-    'exp.khr.role': 'Personal project',
-    'exp.khr.p1': '<strong>AI</strong>-powered SaaS that turns WhatsApp and Instagram DMs into real bookings. It automates appointments for local businesses through the <strong>WhatsApp Business API</strong> (Baileys), with automatic confirmations and reminders.',
+    'exp.khr.role': 'Personal project · closed',
+    'exp.khr.p1': '<strong>AI</strong>-powered SaaS that turned WhatsApp and Instagram DMs into bookings for local businesses, through the <strong>WhatsApp Business API</strong> (Baileys), with automatic confirmations and reminders.',
     'exp.ua.role': 'BSc in Computer Engineering',
     'exp.ua.b1': 'Major: Software Engineering',
     'exp.ua.p1': 'Software Engineering track (2025–2026): <strong>architecture</strong>, distributed systems, agile methods, quality and requirements engineering.',
@@ -1035,19 +968,11 @@
     'proj.impulsa.p2': 'Regression suite against the production model: <strong>29/29 requests valid</strong> on the first try (Holded, Stripe, HubSpot, Shopify, WhatsApp…).',
     'proj.impulsa.p3': 'Multi-tenant with per-organization isolation, AI credits in euros via Stripe and continuous deployment.',
     'f.version': 'Version', 'f.since': 'Since', 'f.since.v': 'Jun 2026',
-    'tag.wip': 'In development',
-    'proj.axis': 'The <strong>AI ecosystem for companies</strong>: chat with the models, a knowledge base, natural-language queries over their database and Impulsa automations, all in one place. It works with the APIs of the models they already use and, if needed, with <strong>local LLMs</strong> too.',
-    'proj.axis.p1': '<strong>DataCopilot</strong>: natural-language questions over the internal database, with role-based permissions and anonymization.',
-    'proj.axis.p2': 'Modules with signed <strong>offline licenses</strong> (Ed25519), no license server required.',
-    'proj.axis.p3': 'Impulsa embedded with single-use access. Now: migrating the frontend to React, as a team.',
-    'proj.axis.note': 'Built on Open WebUI',
     'proj.acta': 'Free <strong>EU AI Act</strong> diagnostic for SMEs and a paid Cumple plan: risk and inventory for every tool, usage policy, art. 4 training and an evidence dossier, with AI and payments built in.',
     'proj.vive': 'Community of people who <strong>code with AI</strong>: in-person meetups in Alicante and Valencia plus online sessions. An Astro site with a Discord bot, newsletter and content automation, on <strong>Cloudflare and Supabase</strong>.',
     'tag.community': 'Community',
-    'axis.core': 'chat · knowledge', 'axis.auto': 'automations', 'axis.tel': 'telemetry', 'axis.mod': 'module', 'axis.base': 'Cloud or own server',
     'proj.setter': 'AI setter for Instagram and WhatsApp: replies to DMs instantly, qualifies leads and books meetings 24/7, covering the whole sales cycle.',
     'proj.enecc': 'Website for a Dubai real estate agency with the Airbnb API built in: properties, availability and bookings synced in one place.',
-    'proj.khrono': 'AI SaaS that turns WhatsApp and Instagram DMs into bookings. Automatic confirmations, reminders and no-show handling for local businesses.',
     'proj.tauri': 'Desktop app template that pairs Tauri (Rust) with n8n to run automations locally, with workflows reflected in a React frontend.',
     'proj.view': 'View project', 'proj.gh': 'View on GitHub',
     'stack.lead': 'The tools I build with every day, from the database to the voice agent.',
