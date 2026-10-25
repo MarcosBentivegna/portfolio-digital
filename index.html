@@ -373,14 +373,14 @@
   .proj__facts dt { font-family: var(--f-mono); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-text); }
   .proj__facts dd { margin: 2px 0 0; font-family: var(--f-display); font-weight: 800; font-size: 18px; color: #f6f2ea; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .proj__media img.proj__img--contain { object-fit: contain; object-position: center; background: #070b14; }
-  .proj--feature .proj__media:has(.proj__img--contain) { background: #070b14; }
+  .proj__media:has(.proj__img--contain) { background: #070b14; }
   .proj:hover .proj__media img.proj__img--contain { transform: scale(1.02); }
-  .proj--impulsa { grid-template-columns: minmax(0, 1fr); }
-  .proj--impulsa .proj__media { aspect-ratio: 2 / 1; min-height: 0; border-right: 0; border-bottom: var(--bw) solid #15141a; }
-  .proj--impulsa .proj__media img.proj__img--contain { object-fit: cover; }
-  .proj--impulsa .proj__body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+  .proj--lead { grid-template-columns: minmax(0, 1fr); }
+  .proj--lead .proj__media { aspect-ratio: 2 / 1; min-height: 0; border-right: 0; border-bottom: var(--bw) solid #15141a; }
+  .proj--lead .proj__media img.proj__img--contain { object-fit: cover; }
+  .proj--lead .proj__body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
   .proj__main, .proj__side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-  .proj--impulsa .proj__foot { margin-top: 0; }
+  .proj--lead .proj__foot { margin-top: 0; }
   .proj__note { font-family: var(--f-mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: rgba(246,242,234,.6); }
     display: grid; place-items: center; padding: 20px; border: 2px solid rgba(246,242,234,.22);
     background:
@@ -482,8 +482,8 @@
     .proj--feature { grid-template-columns: minmax(0, 1fr); }
     .proj--feature .proj__media { min-height: 0; aspect-ratio: 16 / 9; border-right: 0; border-bottom: var(--bw) solid #15141a; }
     .contact { grid-template-columns: 1fr; }
-    .proj--impulsa .proj__body { grid-template-columns: minmax(0, 1fr); }
-    .proj--impulsa .proj__media { aspect-ratio: 16 / 10; }
+    .proj--lead .proj__body { grid-template-columns: minmax(0, 1fr); }
+    .proj--lead .proj__media { aspect-ratio: 16 / 10; }
   }
   @media (min-width: 921px) {
     .nav__links .nav__cta { display: none; }
@@ -716,44 +716,43 @@
     </header>
 
     <div class="bento">
-      <article class="card proj proj--feature proj--impulsa" data-reveal>
-        <div class="proj__media"><img src="uploads/opt/impulsa.jpg" alt="Portada de Owtli Impulsa: «Tu empresa, orquestada por IA»" width="1600" height="960" loading="lazy" class="proj__img--contain"></div>
+      <article class="card proj proj--feature proj--lead" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/acta.jpg" alt="Portada de Owtli Acta: «Tu equipo ya usa IA. ¿Está en regla?»" width="1600" height="900" loading="lazy"></div>
         <div class="proj__body">
           <div class="proj__main">
           <div class="proj__head">
-            <h3>Owtli Impulsa</h3>
+            <h3>Owtli Acta</h3>
             <span class="chip chip--orange"><span class="status__dot" aria-hidden="true"></span><span data-i18n="tag.prod">En producción</span></span>
           </div>
-          <p data-i18n="proj.impulsa" data-html>SaaS de automatización para empresas. El cliente describe en una frase lo que necesita, la automatización nace en ese momento y se termina de formar <strong>hablando con un asistente de IA</strong> que la genera, la ensaya y la repara solo cuando falla.</p>
+          <p data-i18n="proj.acta" data-html>Diagnóstico gratuito de la <strong>Ley de IA europea</strong> para pymes y plan Cumple de pago: inventario y riesgo de cada herramienta, política de uso, formación del art. 4 y dossier de evidencias, con IA y pagos integrados.</p>
           <ul class="proj__points">
-            <li data-i18n="proj.impulsa.p1" data-html><strong>Owtli Runner</strong>, motor propio que sustituyó a n8n: especificación en prosa, scripts deterministas y Playwright para las apps sin API.</li>
-            <li data-i18n="proj.impulsa.p2" data-html>Batería de regresión contra el modelo real: <strong>29/29 encargos válidos</strong> a la primera (Holded, Stripe, HubSpot, Shopify, WhatsApp…).</li>
-            <li data-i18n="proj.impulsa.p3" data-html>Multiempresa con aislamiento por organización, créditos de IA en euros con Stripe y despliegue continuo.</li>
+            <li data-i18n="proj.acta.p1" data-html><strong>Diagnóstico gratuito</strong> con informe: inventario de las herramientas de IA del equipo y el riesgo de cada una.</li>
+            <li data-i18n="proj.acta.p2" data-html><strong>Acta Guarda</strong>, extensión para Chrome y Edge: avisa al pegar datos personales en webs de IA y los sustituye por marcas que se restauran en la respuesta.</li>
+            <li data-i18n="proj.acta.p3" data-html>Suscripción con política de uso, <strong>formación del art. 4</strong> y dossier de evidencias, con pagos en Stripe y purgado automático de datos.</li>
           </ul>
           </div>
           <div class="proj__side">
           <dl class="proj__facts">
-            <div><dt data-i18n="f.version">Versión</dt><dd>3.32</dd></div>
-            <div><dt>Commits</dt><dd>469</dd></div>
-            <div><dt data-i18n="f.since">Desde</dt><dd data-i18n="f.since.v">Jun 2026</dd></div>
+            <div><dt data-i18n="f.plans">Planes</dt><dd>3</dd></div>
+            <div><dt data-i18n="f.ext">Extensión</dt><dd>MV3</dd></div>
+            <div><dt data-i18n="f.since">Desde</dt><dd data-i18n="f.since.acta">Oct 2026</dd></div>
           </dl>
           <div class="proj__foot">
-            <ul class="tags"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Cloudflare</li><li>Node.js</li><li>Playwright</li><li>DeepSeek</li><li>Stripe</li></ul>
-            <a class="link proj__stretch" href="https://impulsa.owtli.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>Cloudflare</li><li>Supabase</li><li>Stripe</li><li>DeepSeek</li></ul>
+            <a class="link proj__stretch" href="https://acta.owtli.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
           </div>
           </div>
         </div>
       </article>
 
-
       <article class="card proj proj--half" data-reveal>
-        <div class="proj__media"><img src="uploads/opt/acta.jpg" alt="Portada de Owtli Acta: «Tu equipo ya usa IA. ¿Está en regla?»" width="1600" height="900" loading="lazy"></div>
+        <div class="proj__media"><img src="uploads/opt/impulsa.jpg" alt="Portada de Owtli Impulsa: «Tu empresa, orquestada por IA»" width="1600" height="960" loading="lazy" class="proj__img--contain"></div>
         <div class="proj__body">
-          <div class="proj__head"><h3>Owtli Acta</h3><span class="chip chip--green" data-i18n="tag.prod">En producción</span></div>
-          <p data-i18n="proj.acta" data-html>Diagnóstico gratuito de la <strong>Ley de IA europea</strong> para pymes y plan Cumple de pago: inventario y riesgo de cada herramienta, política de uso, formación del art. 4 y dossier de evidencias, con IA y pagos integrados.</p>
+          <div class="proj__head"><h3>Owtli Impulsa</h3><span class="chip chip--green" data-i18n="tag.prod">En producción</span></div>
+          <p data-i18n="proj.impulsa.short" data-html>SaaS de automatización para empresas: describes lo que necesitas y la automatización se forma <strong>hablando con un asistente de IA</strong> que la genera, la ensaya y la repara. Corre sobre <strong>Owtli Runner</strong>, un motor propio que sustituyó a n8n.</p>
           <div class="proj__foot">
-            <ul class="tags"><li>React</li><li>TypeScript</li><li>Cloudflare</li><li>Supabase</li><li>Stripe</li><li>DeepSeek</li></ul>
-            <a class="link proj__stretch" href="https://acta.owtli.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>Supabase</li><li>Cloudflare</li><li>Playwright</li><li>Stripe</li></ul>
+            <a class="link proj__stretch" href="https://impulsa.owtli.com/" target="_blank" rel="noopener"><span data-i18n="proj.view">Ver proyecto</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
           </div>
         </div>
       </article>
@@ -861,7 +860,7 @@
         <ul class="langs">
           <li><span data-i18n="l.es">Español</span><small data-i18n="l.native">Nativo</small></li>
           <li><span data-i18n="l.ca">Catalán</span><small data-i18n="l.adv">Avanzado</small></li>
-          <li><span data-i18n="l.en">Inglés</span><small data-i18n="l.mid">Intermedio</small></li>
+          <li><span data-i18n="l.en">Inglés</span><small data-i18n="l.basic">Básico</small></li>
         </ul>
       </div>
     </div>
@@ -963,12 +962,12 @@
     'proj.title': 'Projects',
     'proj.lead': 'Products in production, real clients and some open source.',
     'tag.active': 'Active', 'tag.prod': 'In production', 'tag.personal': 'Personal',
-    'proj.impulsa': 'Automation SaaS for businesses. The client describes what they need in one sentence, the automation is born right then and takes shape <strong>by talking to an AI assistant</strong> that builds it, test-runs it and repairs it on its own when it fails.',
-    'proj.impulsa.p1': '<strong>Owtli Runner</strong>, an in-house engine that replaced n8n: spec in plain prose, deterministic scripts and Playwright for apps without an API.',
-    'proj.impulsa.p2': 'Regression suite against the production model: <strong>29/29 requests valid</strong> on the first try (Holded, Stripe, HubSpot, Shopify, WhatsApp…).',
-    'proj.impulsa.p3': 'Multi-tenant with per-organization isolation, AI credits in euros via Stripe and continuous deployment.',
-    'f.version': 'Version', 'f.since': 'Since', 'f.since.v': 'Jun 2026',
+    'proj.impulsa.short': 'Automation SaaS for businesses: you describe what you need and the automation takes shape <strong>by talking to an AI assistant</strong> that builds it, test-runs it and repairs it. It runs on <strong>Owtli Runner</strong>, an in-house engine that replaced n8n.',
+    'f.plans': 'Plans', 'f.ext': 'Extension', 'f.since': 'Since', 'f.since.acta': 'Oct 2026',
     'proj.acta': 'Free <strong>EU AI Act</strong> diagnostic for SMEs and a paid Cumple plan: risk and inventory for every tool, usage policy, art. 4 training and an evidence dossier, with AI and payments built in.',
+    'proj.acta.p1': '<strong>Free diagnostic</strong> with a report: an inventory of the team’s AI tools and the risk of each one.',
+    'proj.acta.p2': '<strong>Acta Guarda</strong>, a Chrome and Edge extension: it warns when personal data is pasted into AI sites and swaps it for placeholders that are restored in the reply.',
+    'proj.acta.p3': 'Subscription with a usage policy, <strong>art. 4 training</strong> and an evidence dossier, with Stripe payments and automatic data purging.',
     'proj.vive': 'Community of people who <strong>code with AI</strong>: in-person meetups in Alicante and Valencia plus online sessions. An Astro site with a Discord bot, newsletter and content automation, on <strong>Cloudflare and Supabase</strong>.',
     'tag.community': 'Community',
     'proj.setter': 'AI setter for Instagram and WhatsApp: replies to DMs instantly, qualifies leads and books meetings 24/7, covering the whole sales cycle.',
@@ -978,7 +977,7 @@
     'stack.lead': 'The tools I build with every day, from the database to the voice agent.',
     'stack.ai': 'AI & automation', 'stack.local': 'LLMs (API & self-hosted)', 'stack.langs': 'Languages',
     'stack.data': 'Data & BaaS', 'stack.devops': 'DevOps & deploy', 'stack.env': 'Tools & methods', 'stack.lang': 'Languages spoken',
-    'l.es': 'Spanish', 'l.ca': 'Catalan', 'l.en': 'English', 'l.native': 'Native', 'l.adv': 'Advanced', 'l.mid': 'Intermediate',
+    'l.es': 'Spanish', 'l.ca': 'Catalan', 'l.en': 'English', 'l.native': 'Native', 'l.adv': 'Advanced', 'l.basic': 'Basic',
     'contact.title': 'Let’s talk<span>?</span>',
     'contact.desc': 'Open to new opportunities, freelance projects and collaborations. If you have a process to automate or want to bring AI into your company, write to me.',
     'copy': 'Copy', 'copied': 'Copied', 'c.phone': 'Phone', 'c.cv': 'Download résumé'
