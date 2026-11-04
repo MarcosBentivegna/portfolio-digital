@@ -358,6 +358,8 @@
   .proj .link { position: relative; z-index: 2; }
   .proj--oss { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
   .proj--oss .proj__media { display: grid; place-items: center; background: #15141a; color: #f6f2ea; aspect-ratio: auto; border-bottom: 0; border-right: var(--bw) solid #15141a; }
+  .proj--dark .proj__media { display: grid; place-items: center; background: #15141a; color: #f6f2ea; }
+  .proj--dark .oss .chip { border-color: #f6f2ea; }
   .oss { display: grid; justify-items: center; gap: 14px; text-align: center; padding: 24px; }
   .oss svg { width: 56px; height: 56px; }
   .oss b { font-family: var(--f-display); font-size: 22px; letter-spacing: -0.01em; }
@@ -757,6 +759,18 @@
         </div>
       </article>
 
+      <article class="card proj proj--half" data-reveal>
+        <div class="proj__media"><img src="uploads/opt/skill-pocket.jpg" alt="skill-pocket: biblioteca local de skills para ChatGPT, Claude y Gemini" width="1600" height="900" loading="lazy"></div>
+        <div class="proj__body">
+          <div class="proj__head"><h3>skill-pocket</h3><span class="chip chip--tint" data-i18n="tag.oss">Open source</span></div>
+          <p data-i18n="proj.skillpocket" data-html>Extensión de Chrome que guarda tus <strong>skills de IA</strong> en una biblioteca local y las inserta en ChatGPT, Claude y Gemini. Parser de <strong>SKILL.md</strong>, variables, búsqueda, sugerencias locales y un adaptador por sitio. Sin servidor, cuenta ni telemetría.</p>
+          <div class="proj__foot">
+            <ul class="tags"><li>TypeScript</li><li>Chrome MV3</li><li>Vitest</li><li>Playwright</li></ul>
+            <a class="link proj__stretch" href="https://github.com/MarcosBentivegna/skill-pocket" target="_blank" rel="noopener"><span data-i18n="proj.gh">Ver en GitHub</span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+        </div>
+      </article>
+
       <article class="card proj proj--half" data-reveal style="--d:.08s">
         <div class="proj__media"><img src="uploads/opt/vivecodea.jpg" alt="Portada de ViveCodea: sesiones de trabajo para quienes programan con IA" width="1600" height="900" loading="lazy"></div>
         <div class="proj__body">
@@ -794,7 +808,7 @@
       </article>
 
 
-      <article class="card proj proj--half proj--oss" data-reveal style="--d:.08s">
+      <article class="card proj proj--half proj--dark" data-reveal style="--d:.08s">
         <div class="proj__media">
           <div class="oss">
             <svg class="icon--fill" aria-hidden="true"><use href="#i-github"/></svg>
@@ -970,6 +984,8 @@
     'proj.acta.p3': 'Subscription with a usage policy, <strong>art. 4 training</strong> and an evidence dossier, with Stripe payments and automatic data purging.',
     'proj.vive': 'Community of people who <strong>code with AI</strong>: in-person meetups in Alicante and Valencia plus online sessions. An Astro site with a Discord bot, newsletter and content automation, on <strong>Cloudflare and Supabase</strong>.',
     'tag.community': 'Community',
+    'tag.oss': 'Open source',
+    'proj.skillpocket': 'Chrome extension that keeps your AI skills in a local library and inserts them into ChatGPT, Claude and Gemini. SKILL.md parser, variables, search, local suggestions and one adapter per site. No server, account or telemetry.',
     'proj.enecc': 'Website for a Dubai real estate agency with the Airbnb API built in: properties, availability and bookings synced in one place.',
     'tag.archived': 'Archived',
     'proj.cyo': 'Philosophy account on Instagram, TikTok and YouTube with daily posting <strong>automated end to end</strong>: AI generation, rendering, scheduling and cleanup, with preflight checks before every batch. <strong>11.1K followers</strong> and <strong>621,789 views in 90 days</strong>. The reusable modules are open source.',
