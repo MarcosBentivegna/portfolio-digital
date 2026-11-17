@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prompt para conciliar facturas con los cobros del banco | Marcos Bentivegna</title>
+<meta name="description" content="El prompt que uso para que la IA concilie las facturas de un negocio con los cobros del banco y marque lo que no puede asignar con seguridad.">
+<meta name="theme-color" content="#1c3f7c">
+<link rel="canonical" href="https://marcosbentivegna.com/hojas/">
+<meta property="og:title" content="Prompt para conciliar facturas con los cobros del banco">
+<meta property="og:description" content="Pégalo en Claude con tus facturas y tus cobros. Marca lo que no puede asignar con seguridad.">
+<meta property="og:url" content="https://marcosbentivegna.com/hojas/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1ede4; --card: #fffdf8; --ink: #15141a; --muted: #5c5963; --line: #15141a; --shadow: #15141a;
+    --blue: #1c3f7c; --orange: #e86a0a; --on-orange: #15141a; --code-bg: #fffdf8;
+    --f-display: "Syne", system-ui, sans-serif; --f-body: "Space Grotesk", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  :root[data-theme="dark"] {
+    --paper: #0b111e; --card: #141d31; --ink: #eee9df; --muted: #a7a3a6; --line: #e2dccf; --shadow: #e86a0a; --code-bg: #0f1829;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); line-height: 1.55; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 20px 72px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 40px; }
+  .top a { color: var(--ink); font-weight: 700; text-decoration: none; font-family: var(--f-display); }
+  .top button { background: transparent; color: var(--ink); border: 2px solid var(--line); border-radius: 999px; padding: 6px 14px; font: 600 14px var(--f-body); cursor: pointer; }
+  .tag { display: inline-block; background: var(--orange); color: var(--on-orange); border: 2px solid var(--line); border-radius: 999px; padding: 4px 14px; font: 700 13px var(--f-body); letter-spacing: .02em; }
+  h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(30px, 6vw, 46px); line-height: 1.08; margin: 18px 0 14px; text-wrap: balance; overflow-wrap: anywhere; }
+  p { margin: 0 0 14px; }
+  .lead { font-size: 18px; color: var(--muted); }
+  .card { background: var(--card); border: 2px solid var(--line); border-radius: 16px; box-shadow: 6px 6px 0 var(--shadow); padding: 20px; margin: 28px 0; }
+  .card h2 { font-family: var(--f-display); font-weight: 800; font-size: 20px; margin: 0 0 12px; }
+  pre { margin: 0; white-space: pre-wrap; word-wrap: break-word; background: var(--code-bg); border: 2px solid var(--line); border-radius: 12px; padding: 16px; font: 500 15px/1.6 var(--f-mono); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: var(--orange); color: var(--on-orange); border: 2px solid var(--line); border-radius: 12px; box-shadow: 4px 4px 0 var(--shadow); font: 700 16px var(--f-body); cursor: pointer; text-decoration: none; }
+  .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow); }
+  .btn--ghost { background: transparent; color: var(--ink); }
+  ol { padding-left: 22px; margin: 0; }
+  li { margin: 0 0 10px; }
+  .nota { font-size: 15px; color: var(--muted); }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid var(--line); font-size: 15px; color: var(--muted); }
+  footer a { color: var(--ink); font-weight: 600; }
+  @media (max-width: 520px) { .btn { width: 100%; } main { padding-top: 20px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <a href="../">marcosbentivegna.com</a>
+    <button type="button" id="tema" aria-label="Cambiar entre tema claro y oscuro">Tema</button>
+  </div>
+
+  <span class="tag">Del vídeo de Claude Sheets</span>
+  <h1>El prompt para conciliar tus facturas con los cobros del banco</h1>
+  <p class="lead">Es el que usé en el vídeo. Le pasas las facturas y los movimientos del banco, y te devuelve una hoja con fórmulas, los estados y los totales. Lo que no puede asignar con seguridad lo deja marcado para que lo revises tú.</p>
+
+  <div class="card">
+    <h2>El prompt</h2>
+    <pre id="prompt">Crea una hoja de cálculo para conciliar mis facturas con los cobros del banco. Facturas: [número, cliente, importe]. Cobros del banco: [importe y concepto]. Una fila por factura, con importe facturado, cobrado, pendiente y estado (cobrada, parcial o pendiente), con fórmulas y totales abajo. Si algo no se puede asignar con seguridad, márcalo.</pre>
+    <div class="actions">
+      <button class="btn" type="button" id="copiar">Copiar el prompt</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Cómo usarlo</h2>
+    <ol>
+      <li>Copia el prompt y pégalo en Claude.</li>
+      <li>Sustituye lo que va entre corchetes por tus facturas y tus cobros, una por línea.</li>
+      <li>Revisa lo que te marque antes de dar nada por bueno: un cobro sin concepto, o un pago que cubre dos facturas, es justo lo que tienes que decidir tú.</li>
+    </ol>
+  </div>
+
+  <p class="nota"><strong>La primera vez, con datos ficticios o anonimizados.</strong> No pegues datos de clientes reales hasta que hayas visto cómo responde con los tuyos. Es una hoja de trabajo, no sustituye a tu gestor ni a tu programa de contabilidad.</p>
+
+  <footer>
+    Hago estos vídeos en <a href="https://www.instagram.com/marcosbentivegna/">Instagram</a>, con IA aplicada a pymes. Si quieres hablar de tu caso, escríbeme a <a href="mailto:marcosbentivegna@gmail.com">marcosbentivegna@gmail.com</a>.
+  </footer>
+</main>
+<script>
+  var c = document.getElementById('copiar');
+  c.addEventListener('click', function () {
+    var t = document.getElementById('prompt').textContent;
+    var ok = function () { c.textContent = 'Copiado'; setTimeout(function () { c.textContent = 'Copiar el prompt'; }, 2000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(ok, fallback); } else { fallback(); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('prompt'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); ok(); } catch (e) { c.textContent = 'Selecciónalo y copia'; }
+    }
+  });
+  document.getElementById('tema').addEventListener('click', function () {
+    var d = document.documentElement, n = d.dataset.theme === 'dark' ? 'light' : 'dark';
+    d.dataset.theme = n; try { localStorage.setItem('theme', n); } catch (e) {}
+  });
+</script>
+</body>
+</html>
